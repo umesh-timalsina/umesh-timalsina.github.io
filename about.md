@@ -1,16 +1,17 @@
 ---
 layout: page
-title: About this blog
+title: About Me
 description: An optional about page for Scriptor Jekyll theme
-feature_image: images/about.jpg
+feature_image: images/umesh.png
 ---
+The one in the right is me :).
 
-**John Doe** is a Senior Art Director from [Vilnius](https://en.wikipedia.org/wiki/Vilnius), Lithuania. After graduating from The College of Visual Arts with a degree in Communication Design, he worked for three small graphic design shops where he honed his design style and sensibility.
+I am is a Research Engineer at Institute For Software Integrated Systems at [Vandy](https://www.isis.vanderbilt.edu){:target="_blank"}, working on   [deepforge](https://www.github.com/deepforge-dev/deepforge) and [MoSDeF](https://www.github.com/mosdef-hub) development. 
 
-His work has been recognized by Communication Arts, Print, How, ID, IdN, AIGA, Effie, Archive, Graphis, AdFed and Rockport. Graphic Design USA named him a person to watch in 2015.
+I am originally from [Nepal](https://en.wikipedia.org/wiki/Nepal){:target="_blank"}. 
 
->The world always seems brighter when you’ve just made something that wasn’t there before. <cite>Neil Gaiman</cite>
-
-As a hobby, John Doe authors the most influential design blog in Lithuania with over 100,000 page views a month. He lives in Vilnius with his beautiful wife, two boys and one girl.
+In may 2018, I received by Masters degree in Computer Science from [SIU Carbondale](https://siu.edu){:target="_blank"}. There, I worked under Dr. Andy Wang 
+in problems related to Natural language Processing as a graduate research assistant. I also worked under professor Wen chi Hou in databases and a novel 
+[`multi-join`](https://github.com/multijoin-hub/){:target="_blank"} algorithm.
 
 *Thank You for reading!*
