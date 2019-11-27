@@ -15,7 +15,7 @@ title: "Umesh's Musings"
 description: "Work. Learn. Scratches."
 
 # The subpath of your site, e.g. /blog, for generating urls.
-baseurl: "/"
+baseurl: ""
 
 # The base hostname & protocol of your site for where absolute urls are needed.
 url: "https://umesh-timalsina.github.io"
