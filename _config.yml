@@ -12,10 +12,10 @@ lang: en-US
 title: "Umesh's Musings"
 
 # A description of your site for meta tag, search engine results.
-description: ""
+description: "Work. Learn. Scratches."
 
 # The subpath of your site, e.g. /blog, for generating urls.
-baseurl: ""
+baseurl: "/"
 
 # The base hostname & protocol of your site for where absolute urls are needed.
 url: "https://umesh-timalsina.github.io"
