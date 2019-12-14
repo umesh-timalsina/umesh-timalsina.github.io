@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A First Look at Stanford Core NLP
+description: "Looking at stanford core NLP"
 comments: true
 feature_image: images/core-nlp.png
 tags: [tech]

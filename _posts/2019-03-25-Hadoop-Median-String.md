@@ -1,10 +1,12 @@
 ---
 layout: post
 title: How to go about solving the median string algorithm using MapReduce
+description: "Solving Median String Problem in DNA"
 comments: true
 feature_image: images/dna.jpg
 tags: [tech]
 ---
+
 Genomes are fascinating. They are the sole source of information in living beings. Computational genetics, biochemistry and biology are rife with problems that are np-hard. As computer scientists, our goal is to come up with solutions that solve the problem biologists are facing in a way that is time and memory efficient.
 
 ## Prologue: The Median String Algorithm and Motifs

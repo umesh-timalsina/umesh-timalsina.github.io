@@ -1,10 +1,12 @@
 ---
 layout: post
 title: OK. Let’s Talk About Moral Bankruptcy
+description: "Moral Bankruptcy"
 comments: true
 feature_image: images/random.jpg
 tags: [random, musings]
 ---
+
 Originally published in medium, Jan 11
 
 Whether its the eastern world where the rustic country spirit powered by chilling breezes originating somewhere in the Himalayas, or the western world that has always(sort of) aggrandized about how great the western civilization is, one of the things that I have experienced in my short life of 25 years is that, in this digital age, where all the people in social media are always happy and doing something with their life :D, people are becoming more and more morally bankrupt. Morality is something deeply inculcated in the religious doctrine of both Abhramic and Dharmic religions, but people seem to care less about morality.
