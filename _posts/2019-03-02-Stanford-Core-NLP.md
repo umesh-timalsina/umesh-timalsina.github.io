@@ -9,6 +9,7 @@ tags: [tech]
 
 In this post, I will look into the Stanford core NLP library and its capabilities. Preprocessing text is an important first step in natural language processing. For example you might have some text that you want word tokenize and find out POS Tags for each and every word. Stanford core NLP comes to the rescue in that case. 
 
+<!--more-->
 Since the core API is written in java, as I assume most of practical machine learning/ deep learning tasks are done in python there's a slight inconvenience to incorporate Stanford Core NLP to your machine learning pipeline directly. So, in this post, I will look into following three aspects of using Stanford core NLP:
 
 1. Using the Java API, learning about annotators and writing come code to use the API.

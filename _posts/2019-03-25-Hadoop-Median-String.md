@@ -9,6 +9,8 @@ tags: [tech]
 
 Genomes are fascinating. They are the sole source of information in living beings. Computational genetics, biochemistry and biology are rife with problems that are np-hard. As computer scientists, our goal is to come up with solutions that solve the problem biologists are facing in a way that is time and memory efficient.
 
+<!--more-->
+
 ## Prologue: The Median String Algorithm and Motifs
 So, what exactly are motifs? Before answering the question, let's look how gene sequences look like. Wikipedia states that, "A nucleic acid sequence is a succession of letters that indicate the order of nucleotides forming alleles within a DNA (using GACT) or RNA (GACU) molecule. By convention, sequences are usually presented from the 5' end to the 3' end. For DNA, the sense strand is used. Because nucleic acids are normally linear (unbranched) polymers, specifying the sequence is equivalent to defining the covalent structure of the entire molecule. For this reason, the nucleic acid sequence is also termed the primary structure."   
 A gene sequence looks as shown below:
