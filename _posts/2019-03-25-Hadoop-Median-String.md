@@ -31,17 +31,17 @@ Say, we have a long DNA sequence, how should we go about finding the consensus m
 
 Few Terms before we start the actual algorithm
 
-$$t$$: Number of sample DNA sequences
+$t$: Number of sample DNA sequences
 
-$$n$$: Length of each DNA sequence
+$n$: Length of each DNA sequence
 
-$$DNA$$: Sample of DNA sequences $$t \times n$$ array
+$DNA$: Sample of DNA sequences $t \times n$ array
 
-$$l$$: length of the motif $$ l - $$ mer
+$l$: length of the motif $ l - $ mer
 
-$$s_i$$: Starting position of an $$ l- $$ mer
+$s_i$: Starting position of an $ l- $ mer
 
-$$s = (s_1, s_2, ..., s_t) $$: array of motif's starting positions
+$s = (s_1, s_2, ..., s_t) $: array of motif's starting positions
 
 An example is shown in the figure below:
 ![Example showing motifs]({{ site.baseurl }}/images/MedianStringAlgorithm/ExampleLmer.png)
@@ -83,24 +83,25 @@ The algorithm is shown below:
 <center>
 The Median String Algorithm 
 </center>
+
 $$ MedianStringSearch(DNA, t, n, l): $$
 
-__1:__ $$ bestWord \longleftarrow AAA...A $$
+__1:__ $ bestWord \longleftarrow AAA...A $
 
-__2:__ $$ bestDistance \longleftarrow \infty $$
+__2:__ $ bestDistance \longleftarrow \infty $
 
-__3:__ $$ \mathbf{for} $$ each $$l-mer$$ $$v$$ from $$AAA...A$$ to $$TTT...T$$ $$\mathbf{do}$$:
+__3:__ $ \mathbf{for} $ each $l-mer$ $v$ from $AAA...A$ to $TTT...T$ $\mathbf{do}$:
 
-__4:__ &nbsp;&nbsp;&nbsp;&nbsp; $$ \mathbf{if} $$ $$ TotalDistance(v, DNA) < bestDistance $$ $$ \mathbf{then}$$:
+__4:__ &nbsp;&nbsp;&nbsp;&nbsp; $ \mathbf{if} $ $ TotalDistance(v, DNA) < bestDistance $ $ \mathbf{then}$:
 
-__5:__ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; $$ bestDistance \longleftarrow TotalDistance(v, DNA) $$
+__5:__ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; $ bestDistance \longleftarrow TotalDistance(v, DNA) $
 
-__6:__  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; $$ bestWord \longleftarrow TotalDistance(v, DNA) $$
+__6:__  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; $ bestWord \longleftarrow TotalDistance(v, DNA) $
 
-__7:__ $$ \mathbf{return }$$ $$ bestWord $$
+__7:__ $ \mathbf{return }$ $ bestWord $
 
 ## How to use MapReduce and Hadoop to solve this problem?
-Now, consider the median string algorithm to find $$ 8-mer $$. The total number of candidate target motifs from $$AAAAAAAA$$ to $$TTTTTTTT$$ is $$4^8$$. Let us convert the algorithm into hadoop map-reduce problem, as shown in the figure below:
+Now, consider the median string algorithm to find $ 8-mer $$. The total number of candidate target motifs from $$AAAAAAAA$$ to $$TTTTTTTT$$ is $$4^8$$. Let us convert the algorithm into hadoop map-reduce problem, as shown in the figure below:
 ![Example showing motifs]({{ site.baseurl }}/images/MedianStringAlgorithm/MRMedianString.png)
 <center>Divide and Conquer For Hadoop</center>
 
