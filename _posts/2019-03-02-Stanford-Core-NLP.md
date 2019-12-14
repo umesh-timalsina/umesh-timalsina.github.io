@@ -2,8 +2,8 @@
 layout: post
 title: A First Look at Stanford Core NLP
 comments: true
-feature_image: images/core-nlp.jpg
-tags: [random, tech]
+feature_image: images/core-nlp.png
+tags: [tech]
 ---
 
 In this post, I will look into the Stanford core NLP library and its capabilities. Preprocessing text is an important first step in natural language processing. For example you might have some text that you want word tokenize and find out POS Tags for each and every word. Stanford core NLP comes to the rescue in that case. 
