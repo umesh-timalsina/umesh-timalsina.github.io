@@ -4,7 +4,7 @@ description = "Work. Learn. Scratches"
 images = ["cover.png"]
 
 # mainSections
-mainSections = ["docs", "about"]
+mainSections = ["docs", "about", "snaps"]
 
 [social]
   twitter = "getdoks"
@@ -12,7 +12,7 @@ mainSections = ["docs", "about"]
 # Doks (@hyas/doks-core)
 [doks]
   # Color mode
-  colorMode = "dark" # auto (default), light or dark
+  colorMode = "auto" # auto (default), light or dark
   colorModeToggler = true # true (default) or false (this setting is only relevant when colorMode = auto)
 
   # Navbar
@@ -44,7 +44,7 @@ mainSections = ["docs", "about"]
   bootstrapJavascript = false # false (default) or true
 
   # Nav
-  sectionNav = ["about", "blog"] # ["docs"] (default) or list of sections (e.g. ["docs", "guides"])
+  sectionNav = ["about", "blog", "snaps"] # ["docs"] (default) or list of sections (e.g. ["docs", "guides"])
   toTopButton = false # false (default) or true
   breadcrumbTrail = false # false (default) or true
   headlineHash = true # true (default) or false
@@ -63,7 +63,7 @@ mainSections = ["docs", "about"]
   backgroundDots = true # true (default) or false
 
   # Homepage
-  sectionFooter = false # false (default) or true
+  sectionFooter = true # false (default) or true
 
   # Blog
   relatedPosts = false # false (default) or true
