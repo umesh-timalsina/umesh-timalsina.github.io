@@ -62,7 +62,9 @@ Overall, these challenges need to be addressed when developing systems for multi
 _ChimeraPy is a distributed computing framework for multimodal data dollection, processing, and feedback. It’s a real-time streaming tool that leverages from a distributed cluster to empower AI-driven applications._
 
 ![ChimeraPy Architecture](images/DaysOfCollection/chimerapy-architecture.png)
-_Detailed System Diagram: Broken into 2 sections: (1) Framework Interface, composed of the Manager, Worker, and Node, performs the cluster setup, configuration, execution, and data aggregation. (2) Application Interface, made up of a CLI, plugin registry, REST API, and a Web app, provides the tooling and scaffolding for pipeline design, deployment, and orchestration._
+_Detailed System Diagram for ChimeraPy: Broken into 2 sections: (1) Framework Interface, composed of the Manager, Worker, and Node, performs the cluster setup, configuration, execution, and data aggregation. (2) Application Interface, made up of a CLI, plugin registry, REST API, and a Web app, provides the tooling and scaffolding for pipeline design, deployment, and orchestration._
+
+When I joined [OELE](wp0.vanderbilt.edu/oele), [Eduardo](https://wp0.vanderbilt.edu/oele/eduardo-davalos/) had already started working on a multi-modal data collection system, which he had named [_ChimeraPy_](https://github.com/ChimeraPy). The name _Chimera[Py]_ comes from the Greek mythology of a creature with the head of a lion, the body of a goat and the tail of a serpant, which he thought would be a befitting name for a system that integrates data from diverse sources. The first iteration of _ChimeraPy_ included a client-server architecture with WebSockets, which eduardo eventually had finished refactoring to use ZeroMQ sockets, by the time I had joined. At the barebones, 
 
 
 ## GEMSTEP Fall 2023
