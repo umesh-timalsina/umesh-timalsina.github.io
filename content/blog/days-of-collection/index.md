@@ -96,6 +96,41 @@ Now it was time to put the system to the test. The initial trial occurred during
 ![GSDCP](/images/DaysOfCollection/gsdcp.png)
 
 ## The Shift to Livekit: A Rationale
+I was relentlessly traveling to the school, fixing code, and taking hardware back and forth from ISIS to the school for hardware and software fixes. Then, after a month or so of helping out Joyce in the classroom study, I was kind of burnt out and hadn't had a proper vacation in 2 years. I spoke with Prof. Biswas, my supervisor, about taking a 45-day-long vacation. With his blessing, I booked my flights, packed my bags, and flew to Nepal in late November 2023.
+
+At this point, we had multiple reasons for being unhappy with the state of things in ChimeraPy. Firstly, while we were happy with developing things and writing Python Nodes ([1](https://github.com/ChimeraPy/RerunNode), [2](https://github.com/ChimeraPy/WSSChimeraPyNode), [3](https://github.com/ChimeraPy/webrtc-chimerapy-node)), we still hadn't thought out and planned a proper architecture to get data from the browsers, which would be crucial for the learning environments we needed to integrate. Using [ZeroMQ](https://github.com/zeromq/jszmq) in browsers wasn't as straightforward as we had thought. Secondly, and perhaps more significantly, we found that most of our time was spent developing and testing the underlying networking infrastructure, and we were nowhere near feature-complete to begin integrating and advertising the multimodal pipeline with ChimeraPy in some of the external and internal learning environments. At OELE, we have to adhere to tighter deadlines, and we were already behind schedule. Additionally, the goal of this research software development endeavor was to develop multimodal data collection/analysis applications rather than developing a distributed streaming framework, which, to be honest, felt like reinventing the wheel a lot of the time. Thirdly, while ChimeraPy worked great for one-off classroom studies with a few streams, the real challenge for us was to scale it to a classroom study with hundreds of streams and deliver it from the cloud.
+
+This was the point after the GEM-STEP study of fall 2023, and I was on vacation. This is when Eduardo and I decided to deliberate on possible steps ahead. We had a lot of discussions, and Eduardo was thinking about extending the ChimeraPy architecture, while I was looking for some open-source solutions that we could leverage.
+
+Overall, we had come to the following takeaways from our discussions:
+
+1. We need to focus on the **deliverables** rather than the underlying networking infrastructure.
+2. **[WebRTC](https://webrtc.org/)** could be a viable solution for our browser integration needs.
+3. Local infrastructure was not scalable for our needs, and we needed to move to the cloud.
+
+A lot of our architectural deliberations are diagrammed in the following draw.io [diagram](https://drive.google.com/file/d/1ltU0fwN6BCdUUstrCeSjVE37Hbz18W_8/view?usp=sharing). Eduardo even wrote up an entire design [document](https://docs.google.com/document/d/1dpWwT8YPing48Q1gLqsosxMh0rToZgXDhzsGrkJaGmU/edit?usp=sharing) for ChimeraJS, which was a proposed extension to ChimeraPy to support browsers. I looked into a few media servers like [mediamtx](https://github.com/bluenviron/mediamtx), [ant media server](https://github.com/ant-media/Ant-Media-Server) etc., to see if we could leverage those servers and repurpose them for streaming as well as writing browser adapters, but none of them seemed to fit the use case we had in mind. We also looked into [PeerJS](https://github.com/peers/peerjs) and [PeerJS-Python](https://github.com/ambianic/peerjs-python), using which we could solve the browser integration problem. All three approaches had their pros and cons, enlisted below:
+
+### Option 1: ChimeraJS + Integrations with ChimeraPy
+The pros of this was that we didn't have to do a lot of pivoting to support this. We could leverage the existing architecture and use an [aiortc](https://github.com/aiortc/aiortc) adapter to support WebRTC. This would also let us have our own WebRTC-based tech stack and would fit a lot of our needs at a lower scale. The cons were that we would still have to develop and test the underlying networking infrastructure, which was a major bottleneck for us. Additionally, leveraging cloud infrastructure would be a challenge, and we would have to do a lot of work to make it work.
+
+### Option 2: Media Servers
+The pros of this approach would be that we would get a ready-to-use infrastructure to support streaming multimodal data, and we would be able to support a wide array of protocols like RTMP, SRT, and WebRTC. Specifically, we looked into [ANT Media Server](https://github.com/ant-media/Ant-Media-Server) and [MediaMTX](https://github.com/bluenviron/mediamtx). The cons were that we would have to write a lot of computation infrastructure code to support our use case, and we would have to do a lot of work to make it work.
+
+### Option 3: PeerJS
+The advantages of using PeerJS include the ability to enable peer-to-peer (P2P) communication utilizing WebRTC, with the support of a custom signaling server hosted in the cloud, which fits well within our existing Python-based infrastructure. This compatibility reduces the need for significant changes to our current system. However, PeerJS presents challenges in terms of scalability, as it is primarily designed for P2P interactions and may struggle under the load of larger, more complex deployments. Moreover, its reliance on P2P connections restricts it to scenarios that do not require centralized control or data aggregation. Additional considerations include the necessity of a robust cloud infrastructure to manage the signaling server effectively, which could increase complexity and costs.
+
+Overall, none of these solutions we looked into really fit our use case, and then one fine morning, from a cafe in Bharatpur, Nepal, I sent out a Slack message to Eduardo about a new open-source project I had found, called [LiveKit](https://github.com/livekit), that touted itself as an open-source, scalable, and secure WebRTC infrastructure. This seemed promising to me in the beginning, however, I have to admit that I didn't know much about it when I sent it to Eduardo. Eduardo, to his credit, did the initial research about LiveKit and had come to the realization that this infrastructure was exactly what we needed. We were on the lookout for an infrastructure that:
+
+1. Respects the Open Source Philosophy
+2. Supports data collection from a wide range of devices/environments
+3. Doesn't need a lot of reinventing of wheels to fit our use cases
+4. Easy to use with browsers as well as local IoT devices
+5. Has support for processing streams locally as well as in the cloud
+
+Eventually, my vacation days were over, and I flew back to Nashville. At this point, we had decided that before pivoting to LiveKit, we should at least explore all the features in a way such that we could make an informed decision. I did a lot of reading, like this very informative blog [post](https://blog.livekit.io/scaling-webrtc-with-distributed-mesh/) and the entirety of the [LiveKit documentation](https://docs.livekit.io/) to actually understand the capabilities we would be getting with LiveKit. With this information, I also worked on a small [proof of concept](https://github.com/oele-isis-vanderbilt/livekit-quickstart) to see if we could leverage LiveKit to fit our use case.
+
+On hindsight, the MMLA collection and analysis requirements are similar to those of video/audio conferencing applications, with an added level of complexity because of the need to support different hierarchies for group and individual audio and peripheral IOT devices. 
+
 
 ## Deep Dive into LiveKit Integration: LivekitMMLA
 
