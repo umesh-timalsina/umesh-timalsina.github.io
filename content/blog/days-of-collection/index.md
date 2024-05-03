@@ -1,7 +1,7 @@
 ---
 title: "Days of Collection, Days of Despair"
-description: "Experiences from Integrating Livekit for Multimodal Learning Analytics Data Collection"
-summary: "Experiences from Integrating Livekit for Multimodal Learning Analytics Data Collection"
+description: "A tale of evolution from ChimeraPy to Livekit-MMLA"
+summary: "A tale of evolution from ChimeraPy to Livekit-MMLA"
 date: 2024-04-25T16:27:22+02:00
 lastmod: 2024-04-25T16:27:22+02:00
 draft: false
@@ -17,7 +17,10 @@ seo:
   canonical: "" # custom canonical URL (optional)
   noindex: true # false (default) or true
 ---
+*Note: This document was reviewed and corrected for spelling and grammar with the assistance of AI-based tools.*
+
 {{< img process="fill 5000x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/DaysOfCollection/livekit-mmla.png" alt="livekit-mmla" >}}
+
 
 ## Introduction
 In my relative short stint at [Open Ended Learning Environments lab(OELE)](https://wp0.vanderbilt.edu/oele/) at Vanderbilt University, I quickly found that learning science research and the core concepts are way above my pay grade, and something that I am not particularly interested in. However, as with any research domain, there are various aspects in which richer computer science theory / tooling can not only streamline the processes in a domain, but also provide richer context and evidences to support / disregard what are the core theories in that domain.  This was my initial days of foraying into multimedia streaming and Multi-modal collection in general. This blog post is a reflection of challenges faced, good and not so good experiences and design decisions and the road ahead for this direction and what I learned from almost an year's worth of work in this domain.
@@ -61,13 +64,36 @@ Overall, these challenges need to be addressed when developing systems for multi
 
 _ChimeraPy is a distributed computing framework for multimodal data dollection, processing, and feedback. It’s a real-time streaming tool that leverages from a distributed cluster to empower AI-driven applications._
 
+
+When I joined [OELE](wp0.vanderbilt.edu/oele), [Eduardo](https://wp0.vanderbilt.edu/oele/eduardo-davalos/) had already started working on a multi-modal data collection system, which he had named [_ChimeraPy_](https://github.com/ChimeraPy). The name _Chimera[Py]_ comes from Greek mythology, describing a creature with the head of a lion, the body of a goat, and the tail of a serpent, which he thought would be a fitting name for a system that integrates data from diverse sources. The first iteration of _ChimeraPy_ included a client-server architecture with WebSockets to stream data, which Eduardo had finished refactoring to use ZeroMQ sockets by the time I had joined. At its core, _ChimeraPy_ used an HTTP Server as a "**Manager**", which could be discovered by clients on the network called "**Workers**". The workers would register themselves as available to take on a streaming task. The streaming architecture used Directed Acyclic Graphs (DAGs), and the node in a graph was a basic unit of computation that would either generate or consume data. These nodes were implemented as Python processes that would eventually be pickled and delivered to workers based on a mapping provided, a process known as `Commit-Graph` in ChimeraPy lingo. For example, if we wanted to create a face detection pipeline using, say, YOLO with a web camera, we would first create the following graph:
+<br/>
+<br/>
+![alt text](images/DaysOfCollection/yolo-dag.png)
+
+*A simple YOLO Face Detection Pipeline, represented as a DAG in ChimeraPy*
+
+In this case, depending on the workers available for a particular cluster instance, we would create a mapping (many-to-one) between nodes and workers. For instance, if we had a GPU machine to run YOLO and another machine to handle the camera and display, we would register two workers with the manager. Then, the action to commit the graph would involve distributing nodes to the workers according to the provided mapping, as shown in the figure below:
+
+![alt text](/images/DaysOfCollection/commit-graph-action.png)
+
+*A visual depiction of the commit graph action in ChimeraPy*
+
+
+In the context of this data flow architecture, each `Node` must implement three critical functions: `setup`, `step`, and `teardown`. During the `setup` phase, the node initializes all necessary resources, such as capturing data inputs and loading models (e.g., YOLO for image recognition tasks). The `step` function is executed repetitively to process data in a streaming manner. Finally, the `teardown` function is called to release resources when the node's operation is completed. Importantly, the nature of each node’s communication role in the graph is determined by its edges: nodes on the outbound edges act as publishers, disseminating data to subsequent nodes, while nodes on the inbound edges serve as subscribers, receiving data from preceding nodes in the graph. Further details of the actual streaming architecture and the whole ecosystem can be found in our paper, linked [here](https://ieeexplore.ieee.org/document/10386382).
+
+So far, we have only discussed the streaming aspects of ChimeraPy; however, as previously noted, streaming and processing multimodal data is only one aspect, and storage is another. In ChimeraPy, rather than using a centralized entity to record individual modalities, the data is recorded by individual workers executing the nodes. After the streaming operation is over (the manager is directed to stop), the recorded data is packaged and sent to the Manager via network file transfer. This approach strikes the right balance between not having to use too many sockets to record data and achieving centralized collection. Additionally, the Node in ChimeraPy provides built-in support to record video, audio, text, JSON, etc., via parametric functions that users can utilize in its `step` function to save the data generated by the Node.
+
+The bare bones of the streaming system were ready, although we had to handle numerous bug fixes and pattern changes. Eduardo was already using the system to collect data for his [Reading Project](https://github.com/RedForestAI/reading_experiment_codes), with some level of success. However, there were various shortcomings and additional features we wanted to cover. First of all, we realized that DAG construction via Python scripts was untenable due to the portability issues of those scripts. Secondly, we needed a configurable way to reuse the nodes that we wrote for a project and to create an ecosystem of reusable nodes. Thirdly, since this system was intended to be used by researchers, we wanted to employ concepts from meta-programming so that nodes and the DAG could be created and deployed from a web dashboard. This led to the development of [`ChimeraPy/Orchestrator`](https://github.com/ChimeraPy/Orchestrator) and the eventual refactoring of the networking engine from [`ChimeraPy`](https://github.com/ChimeraPy) to [`ChimeraPy/Engine`](https://github.com/ChimeraPy/Engine). The ChimeraPyOrchestrator would eventually provide reusable nodes and an orchestration scheme/dashboard application for ChimeraPy with JSON configuration. We also created [`ChimeraPy/Pipelines`](https://github.com/ChimeraPy/Pipelines), a repository of shareable ChimeraPy pipelines. Leveraging the `Orchestrator` and `Engine` constructs, we achieved an application interface for the ChimeraPy framework, which we used for writing various MMLA collection and analytics applications. There were quite a few feature backlogs as well as bug fixes needed, but we had achieved a functional CLI and system for using reusable software to stream, process, and collect multi-modal data, leading to the following system diagram.
+
 ![ChimeraPy Architecture](images/DaysOfCollection/chimerapy-architecture.png)
+
 _Detailed System Diagram for ChimeraPy: Broken into 2 sections: (1) Framework Interface, composed of the Manager, Worker, and Node, performs the cluster setup, configuration, execution, and data aggregation. (2) Application Interface, made up of a CLI, plugin registry, REST API, and a Web app, provides the tooling and scaffolding for pipeline design, deployment, and orchestration._
 
-When I joined [OELE](wp0.vanderbilt.edu/oele), [Eduardo](https://wp0.vanderbilt.edu/oele/eduardo-davalos/) had already started working on a multi-modal data collection system, which he had named [_ChimeraPy_](https://github.com/ChimeraPy). The name _Chimera[Py]_ comes from the Greek mythology of a creature with the head of a lion, the body of a goat and the tail of a serpant, which he thought would be a befitting name for a system that integrates data from diverse sources. The first iteration of _ChimeraPy_ included a client-server architecture with WebSockets, which eduardo eventually had finished refactoring to use ZeroMQ sockets, by the time I had joined. At the barebones, 
-
+Now it was time to put the system to the test. The initial trial occurred during the [GEM-STEP](https://embodiedplay.org/) retreat in the summer of 2023, where we collected audio and video data from six web cameras and microphones as graduate students engaged with the game. Subsequently, we used ChimeraPy to develop several [demos](https://github.com/ChimeraPy/Pipelines) for the EngageAI site visit and additional pipelines for [benchmarking](https://github.com/ChimeraPy/Benchmarks) as well. However, the first significant real-world application emerged when we had to develop a data collection pipeline for a classroom study conducted in October and November 2023 at [Norman Binkley Elementary School in Nashville](https://normanbinkley.mnps.org/).
 
 ## GEMSTEP Fall 2023
+
+![GSDCP](/images/DaysOfCollection/gsdcp.png)
 
 ## The Shift to Livekit: A Rationale
 
