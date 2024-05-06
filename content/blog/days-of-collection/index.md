@@ -1,7 +1,7 @@
 ---
 title: "Days of Collection, Days of Despair"
-description: "A tale of evolution from ChimeraPy to Livekit-MMLA"
-summary: "A tale of evolution from ChimeraPy to Livekit-MMLA"
+description: "A tale of evolution from ChimeraPy to LiveKitMMLA"
+summary: "A tale of evolution from ChimeraPy to LiveKitMMLA"
 date: 2024-04-25T16:27:22+02:00
 lastmod: 2024-04-25T16:27:22+02:00
 draft: false
@@ -21,9 +21,23 @@ seo:
 
 {{< img process="fill 5000x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/DaysOfCollection/livekit-mmla.png" alt="livekit-mmla" >}}
 
+## Contents
+1. [Introduction](#introduction)
+2. [MMLA Collection and Processing](#mmla-collection-and-processing)
+3. [The V1: ChimeraPy](#the-v1-chimerapy)
+4. [GEM-STEP Fall 2023 (GSDCP)](#gemstep-fall-2023-gsdcp)
+5. [The Shift to LiveKit: A Rationale](#the-shift-to-livekit-a-rationale)
+6. [LiveKit Integration: LivekitMMLA](#livekit-integration-livekitmmla)
+7. [IACT Study: Spring 2024](#iact-study-spring-2024)
+8. [Practical Outcomes and Experiences](#practical-outcomes-and-experiences)
+9. [Lessons Learned and Best Practices](#lessons-learned-and-best-practices)
+10. [The Road Ahead](#the-road-ahead)
+11. [Call To Action](#call-to-action)
+12. [Special Mention to Eduardo](#special-mention-to-eduardo)
+13. [Thanks NSF](#thanks-nsf)
 
 ## Introduction
-In my relative short stint at [Open Ended Learning Environments lab(OELE)](https://wp0.vanderbilt.edu/oele/) at Vanderbilt University, I quickly found that learning science research and the core concepts are way above my pay grade, and something that I am not particularly interested in. However, as with any research domain, there are various aspects in which richer computer science theory / tooling can not only streamline the processes in a domain, but also provide richer context and evidences to support / disregard what are the core theories in that domain.  This was my initial days of foraying into multimedia streaming and Multi-modal collection in general. This blog post is a reflection of challenges faced, good and not so good experiences and design decisions and the road ahead for this direction and what I learned from almost an year's worth of work in this domain.
+In my relative short stint at [Open Ended Learning Environments lab(OELE)](https://wp0.vanderbilt.edu/oele/) at Vanderbilt University, I quickly found that learning science research and the core concepts are way above my pay grade. However, as with any research domain, there are various aspects in which richer computer science theory / tooling can not only streamline the processes in a domain, but also provide richer context and evidences to support / disregard what are the core theories in that domain.  This was my initial days of foraying into multimedia streaming and Multi-modal collection in general. This blog post is a reflection of challenges faced, good and not so good experiences, design decisions and the road ahead for this direction and what I learned from almost an year's worth of work in this domain.
 
 But even before that, my current role came into existence followed by an unfortunate end to a previous [DARPA project](https://github.com/symbench) and thanks to the [NSF Engage AI institute](https://engageai.org) for investing in a Multi-modal learning analytics strand and delegating [OELE](https://wp0.vanderbilt.edu/oele/) as its leader, for which I was hired to develop and test platform and infrastructure for collecting and analysis of Multi-modal data for education, specifically, for the classroom studies conducted with the learning environments like [C2STEM](https://www.c2stem.org/), [Betty's Brain](https://news.vanderbilt.edu/2008/03/11/bettys_brain_motivates_learning/), [GEM-STEP](https://embodiedplay.org/) and [EcoJourneys](https://www.intellimedia.ncsu.edu/projects/) etc... by the researchers in the institute. The eventual goal of this project is to come up with a unified software architecture to collect and process multi-modal data from these learning environments at scale, with a goal to (a.) Automate some of the tedious processes ([discussed more below](#mmla-collection-v1)) within the domain and (b.) Generate meaningful artifacts as feedback to learning environments and researchers for tangible research outcomes as well as enhanced teacher/students' experiences for teaching/learning.   
 
@@ -58,7 +72,7 @@ Here, I have itemized a list of challenges on collecting and analyzing multi mod
 
 10. **Ethical Concerns**: Addressing ethical issues around surveillance and consent in educational settings is critical. It involves navigating privacy laws, securing informed consent from participants, and maintaining transparency about data use. These concerns are especially acute given the intrusive nature of some data collection methods, such as continuous video and audio monitoring, which can raise significant privacy and ethical red flags.
 
-Overall, these challenges need to be addressed when developing systems for multi modal data collection for learning analytics. To that end, our goal through out the endeavor was to develop and build integration channels for the exact system, which we will aptly call the **_Multi Modal Learning Analytics Pipeline_** (MMLA Pipeline)
+Overall, these challenges need to be addressed when developing systems for multi modal data collection for learning analytics. To that end, our goal through out the endeavor was to develop and build integration channels for the exact system, which we will aptly call the **_Multi Modal Learning Analytics Pipeline_** (MMLA Pipeline).
 
 ## The V1: ChimeraPy
 
@@ -91,18 +105,30 @@ _Detailed System Diagram for ChimeraPy: Broken into 2 sections: (1) Framework In
 
 Now it was time to put the system to the test. The initial trial occurred during the [GEM-STEP](https://embodiedplay.org/) retreat in the summer of 2023, where we collected audio and video data from six web cameras and microphones as graduate students engaged with the game. Subsequently, we used ChimeraPy to develop several [demos](https://github.com/ChimeraPy/Pipelines) for the EngageAI site visit and additional pipelines for [benchmarking](https://github.com/ChimeraPy/Benchmarks) as well. However, the first significant real-world application emerged when we had to develop a data collection pipeline for a classroom study conducted in October and November 2023 at [Norman Binkley Elementary School in Nashville](https://normanbinkley.mnps.org/).
 
-## GEMSTEP Fall 2023
+## GEMSTEP Fall 2023 (GSDCP)
 In the beginning of Fall 2023, we were tasked with developing a data collection pipeline for the [GEM-STEP](https://embodiedplay.org) study, which was to be conducted at Norman Binkley Elementary School in Nashville. The study was a collaboration between [Noel Enyedy](https://peabody.vanderbilt.edu/bio/?pid=noel-enyedy)'s group from the Peabody campus at Vanderbilt and [OELE](https://wp0.vanderbilt.edu/oele). Several PhD students from his group and from our lab, including [Joyce](https://scholar.google.com/citations?user=6QmCCGEAAAAJ), Eduardo, and myself, were responsible for the research and technical aspects of the study.
 
-In the GEM-STEP project, students embody characters in a game and learn about various scientific processes and concepts. The game utilizes a Pozyx system to track students in the play area, and their positions are mapped to a screen. One module, for example, might focus on Photosynthesis, where students embody molecules and move around the play area to collect sunlight and water. The game is designed for group play, and students are expected to collaborate to achieve the learning objectives. During gameplay, the system generates game logs that would later be used in analysis.
+In the GEM-STEP project, students embody characters in a game and learn about various scientific processes and concepts. The game utilizes a Pozyx system to track students in the play area, and their positions are mapped to a screen. One module, for example, might focus on Photosynthesis, where students embody molecules and move around the play area to collect sunlight and water. The game is designed for group play, and students are expected to collaborate to achieve the learning objectives. During game play, the system generates game logs that would later be used in analysis. Usually, students move around the play area, looking at a big screen that has projections from the game.
 
-The data collection was constrained by the fact that we had to take our systems to a Norman Binkley classroom, where space for device placement was limited, and we were truly constrained because we couldn't access the internet. Since this was the first test of our system in a real-world classroom setting, we didn't want to replace the traditional ways in which Noel's group collected data in the classroom. Therefore, we decided to supplement the traditional data collection methods with our system, which could collect audio, video, and other data in the classroom. 
+The data collection requirements for our study at Norman Binkley Elementary School included collecting (a) students' and teachers' audio, (b) gameplay video from multiple angles, (c) game logs, and (d) gameplay screen captures. Given the limitations of space for device placement in the classroom and the lack of internet access, we needed to adapt our approach to supplement the traditional data collection methods used by Noel's group without replacing them.
+
+Joyce discovered the [UMC1820](https://www.behringer.com/product.html?modelCode=0805-AAN) audio interface from Behringer, which could collect audio from eight wireless microphones simultaneously. This capability was sufficient to capture audio from all students and the teacher. Considering the space and hardware constraints in the classroom, we ruled out the use of wired cameras for video streaming. Instead, we considered using smartphones due to their portability and minimal space requirements. After researching various apps capable of streaming video from phones, such as [DroidCam](https://www.dev47apps.com/), [EpocCam](https://www.elgato.com/us/en/s/epoccam), [IPWebCam](https://play.google.com/store/apps/details?id=com.pas.webcam&hl=en_US&gl=US&pli=1), [IVCam](https://www.e2esoft.com/ivcam/), [IRIUN](https://iriun.com/), and [Larix Broadcaster](https://softvelum.com/larix/), we invested time in selecting a suitable budget phone and tripod mounts, eventually choosing the [Pixel 7a](https://store.google.com/product/pixel_7a?hl=en-US).
+
+For accurate vision-based position estimation and camera pose estimation in the gameplay area, we opted to use [Aruco Markers](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html). This combination of technologies allowed us to effectively collect comprehensive data while accommodating the physical and technical constraints of the classroom environment.
+
+![GSDCP Collection](/images/DaysOfCollection/gsdcp-collection.png)
+*The data collection setup for GEMSTEP study of fall 2023. 4 phones, audio interface and a macbook, together with the ChimeraPy server were used to collect data from the classroom*
+
+The data collected was stored on the server and replicated across two SSD disks. Initially, everything worked great; however, upon reviewing the video footage and based on [Ashwin](https://sites.google.com/view/ashwintudur/)'s suggestion, we realized we needed to use the wide-angle cameras in the Pixel 7a, which none of the aforementioned apps supported, barring the Larix broadcaster. However, the setup to make that work was quite complicated. Eventually, we found [CameraFi Live](https://www.camerafi.com/), which enabled us to work with the wide-angle lens in the phone, but required us to host a separate RTMP server on-premises. I found a helpful [blog post](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-video-streaming-server-using-nginx-rtmp-on-ubuntu-20-04) on how to host an RTMP server using NGINX. However, there was a significant delay in the feed and the eventual video that was saved, which Joyce had to do a lot of post-processing on to synchronize everything, a compromise we accepted, leading to the following architecture:
 
 ![GSDCP](/images/DaysOfCollection/gsdcp.png)
 *The eventual architecture of the GEM-STEP Classroom Study Data Collection Pipeline*
 
+Overall, during the 45-day-long study (October-November 2023), ChimeraPy and the data collection pipeline we developed managed to collect close to 1 terabyte of data, which our peers eventually used to write an AIED paper. We continue to use this data for vision-based automated interaction analysis (Visualization Timeline). While the study was a relative success, we all recognized that there was room for improvement. Nevertheless, considering the time and space constraints, we were satisfied with the overall endeavor. The github repository is linked [here](https://github.com/oele-isis-vanderbilt/GSDCP.git).
+
+At this point, I was relentlessly traveling to the school, fixing code, and transporting hardware back and forth from ISIS to the school for hardware and software fixes. After a month or so of helping out Joyce in the classroom study, I felt quite burnt out, having not taken a proper vacation in 2 years. I discussed with Prof. [Biswas](https://engineering.vanderbilt.edu/bio/?pid=gautam-biswas), my supervisor, the possibility of taking a 45-day-long vacation. With his blessing, I booked my flights, packed my bags, and flew to Nepal in late November 2023.
+
 ## The Shift to Livekit: A Rationale
-I was relentlessly traveling to the school, fixing code, and taking hardware back and forth from ISIS to the school for hardware and software fixes. Then, after a month or so of helping out Joyce in the classroom study, I was kind of burnt out and hadn't had a proper vacation in 2 years. I spoke with Prof. Biswas, my supervisor, about taking a 45-day-long vacation. With his blessing, I booked my flights, packed my bags, and flew to Nepal in late November 2023.
 
 At this point, we had multiple reasons for being unhappy with the state of things in ChimeraPy. Firstly, while we were happy with developing things and writing Python Nodes ([1](https://github.com/ChimeraPy/RerunNode), [2](https://github.com/ChimeraPy/WSSChimeraPyNode), [3](https://github.com/ChimeraPy/webrtc-chimerapy-node)), we still hadn't thought out and planned a proper architecture to get data from the browsers, which would be crucial for the learning environments we needed to integrate. Using [ZeroMQ](https://github.com/zeromq/jszmq) in browsers wasn't as straightforward as we had thought. Secondly, and perhaps more significantly, we found that most of our time was spent developing and testing the underlying networking infrastructure, and we were nowhere near feature-complete to begin integrating and advertising the multimodal pipeline with ChimeraPy in some of the external and internal learning environments. At OELE, we have to adhere to tighter deadlines, and we were already behind schedule. Additionally, the goal of this research software development endeavor was to develop multimodal data collection/analysis applications rather than developing a distributed streaming framework, which, to be honest, felt like reinventing the wheel a lot of the time. Thirdly, while ChimeraPy worked great for one-off classroom studies with a few streams, the real challenge for us was to scale it to a classroom study with hundreds of streams and deliver it from the cloud.
 
@@ -153,17 +179,63 @@ One of the standout features of the LiveKit ecosystem is that it is completely o
 
 In our specific context, the most significant advantage was LiveKit’s out-of-the-box support for video, audio, and screen, as well as data streaming from the browser, which had been a major bottleneck in our ChimeraPy project. Additionally, LiveKit's [Egress](https://docs.livekit.io/egress-ingress/) feature allows for saving the streams to cloud storage, with synchronization achieved via seconds from the Unix epoch as timestamps for audio and video data. Furthermore, the [Agents](https://docs.livekit.io/agents/) framework in LiveKit offers a streamlined solution for processing and providing feedback on participants' streams. All of these features made it clear that pivoting to LiveKit was the right move for us, and we were ready to make the switch.
 
-## Deep Dive into LiveKit Integration: LivekitMMLA
+## LiveKit Integration: LiveKitMMLA
+Before we dive into how we integrated LiveKit, let's examine what a typical "LiveKit Workflow" looks like. A LiveKit server can either be self-hosted or accessed via the [LiveKit Cloud](https://cloud.livekit.io) for an already operational LiveKit deployment. Typically, a server has a `ws(s)` URL that clients need to connect to. Additionally, to send authenticated requests to the server, a set of API key-secret pairs must be generated.
 
-## IACT Study: Spring 2024
+The LiveKit SDKs are divided into two main categories: 
+1. **Server SDKs**: These are used for backend operations such as creating rooms, generating join tokens, and managing room recordings.
+2. **Realtime SDKs**: These are used on the client side for streaming media to the room.
+
+For successful integration, the backend should enable clients in the system to request room join tokens, complete with customizable [video grants](https://docs.livekit.io/reference/server-sdk-js/VideoGrant/), which clients can then use to enter the LiveKit room via the Realtime SDKs. The server-side SDKs manage tasks such as creating rooms, deleting rooms, listing rooms, and starting room egress, among others. Meanwhile, the Realtime SDK includes utilities for streaming from media devices, functions for joining and leaving rooms, setting room presets, streaming data, and more. This comprehensive setup allows for robust and versatile interaction within the LiveKit ecosystem. Further details on this can be found in the LiveKit [documentation](https://docs.livekit.io).
+
+Once we decided to make the switch, I realized that a good starter project for integrating LiveKit would be to rewrite the GEM-STEP data collection pipeline using LiveKit. At that time, we didn't have any specific studies or deadlines pending, so I thought this would be a valuable exercise and could potentially benefit a future study scheduled for the fall of 2024. Within the LiveKit ecosystem, the NextJS and React-based integration seemed the simplest and offered the least resistance. Therefore, I started with a NextJS application that could create a LiveKit room (using the [LiveKit server-sdk-js](https://github.com/livekit/server-sdk-js)), where admin users in the application would be able to share cameras and microphones (using [LiveKit React components](https://github.com/livekit/components-js)).
+
+For the collection aspect of the GEM-STEP Data Collection Pipeline (GSDCP), the solution involved using AWS S3 buckets for storage and recording. Initially, I utilized [LiveKit Cloud](https://cloud.livekit.io) for local development and testing, but I soon realized that using a locally deployed LiveKit server would be more effective and straightforward for local development. The NextJS app was initially deployed on [Vercel](https://vercel.com) and used a free Vercel PostgreSQL database with [Prisma](https://www.prisma.io/) as the ORM.
+
+This exercise was particularly effective as it allowed me to delve deeper into how things operate within the LiveKit ecosystem. The extensive [React components library](https://docs.livekit.io/reference/components/react/) provided by LiveKit made the development experience smoother. At the time, I also explored implementations for [Meet](https://meet.livekit.io/) and [Kitt](https://kitt.livekit.io/), two example projects within LiveKit that utilized the React components library. The LiveKit GitHub repository offers excellent starter examples for nearly every SDK, which greatly facilitates newcomers to the ecosystem. Additionally, the community support provided by their Slack channel was outstanding, offering helpful responses to a wide range of user questions, no matter how trivial.
+
+As we went further in the development of this NextJS app, Eduardo and Me came to the conclusion that rather than building one-off solutions for the individual use cases, we need to come up with a generic solution that we could repurpose and enhance for all the studies within OELE and the Institute in general. This is when we brewed the idea for "LiveKitMMLA: LiveKit integration for various MMLA tasks". Our idea was to provide an orchestration dashboard that various learning environments could reuse to preview and record data for the classroom studies, provided they integrate with our ecosystem. The overall architecture would look like the following:
+
+![LiveKitMMLA Architecture](/images/DaysOfCollection/livekit-mmla-arch.png)
+*Proposed LiveKitMMLA Architecture*
+
+Basically, we would create a backend for generating user tokens and managing room recordings, as well as comprehensive user management. A dashboard would be used to preview and record data, and an IoT client for streaming from local peripheral devices, as well as integration channels for various learning environments to join LiveKit rooms.
+
+While trying to refactor the NextJS app to fit this pursuit, I quickly realized that we would require a more comprehensive solution than just a NextJS server-side solution. For example, I wanted to integrate IoT client support within the NextJS app, which was not the ideal use case for NextJS. So, eventually, we decided to plan the LiveKitMMLA backend, following in the footsteps of the LiveKit ecosystem. We planned the following components for the backend:
+
+![LiveKitMMLA Backend](/images/DaysOfCollection/livekit-mmla-backend.png)
+*LiveKitMMLA Backend Components*
+
+The LiveKitMMLA backend consists of the following components:
+
+1. **Domain**: The database and ORM interaction module for the system.
+2. **Shared**: Common reusable functions and utilities.
+3. **Application**: Main application logic for creating LiveKit rooms, sending recording requests, stopping recording, managing users, and handling API keys and secrets.
+4. **REST API**: The server and routes for the LiveKitMMLA application.
+5. **Client(s)**: REST clients, preferably packaged in various languages, for interacting with the REST API and the LiveKitMMLA application.
+6. **CLI**: The command-line interface (CLI) for the LiveKitMMLA application.
+7. **IoT**: The streamer for IoT devices.
+
+With these components, we believed we could create a comprehensive integration of LiveKit for MMLA tasks. Eventually, the time came to choose a language for implementation, for which we opted for [Rust](https://www.rust-lang.org/). For the database, we selected [PostgreSQL](https://www.postgresql.org/) with [Diesel](https://diesel.rs/) as the ORM, and for the web server, we used [Actix](https://actix.rs/).
+
+We successfully refactored the NextJS application to utilize the LiveKitMMLA REST API, and all server-side actions of LiveKit were controlled by LiveKitMMLA. For the entire deployment, there is a single LiveKit server that the admin users can use to create a LiveKit room. Additionally, a single S3 bucket is used to save and record data from the LiveKit Egress servers. We deployed the applications on a single AWS EC2 instance accessible at [`https://dashboard.livekit-mmla.org`](https://dashboard.livekit-mmla.org). The application also implemented an API key and secret-based request middleware, where the application recognizes and authorizes requests with JWTs signed by the key and secret. Thus, the workflow is that admin users and developers of the learning environments generate their API keys and secrets and send requests to the LiveKitMMLA API by signing a bearer token with their key and secret for LiveKitMMLA. We also worked on a local data-sharing app [`https://example-app.livekit-mmla.org`](https://example-app.livekit-mmla.org) for sharing local devices from the browser. However, we have not yet developed the IoT device streaming. We want to get this right and create a system with minimal friction, a task set for summer 2024. The mono-repo is available [here](https://github.com/oele-isis-vanderbilt/LiveKitMMLA.git), but still needs a lot of work and refactorings.
+
+Our collaborators at [NC State](https://www.intellimedia.ncsu.edu/people/) were keen on integrating ChimeraPy with the AI Institute's flagship narrative-centered learning environment. While [Vikram](https://www.intellimedia.ncsu.edu/people/vkumara/) had already done some work with ChimeraPy, the integration we initially planned needed to shift to use LiveKitMMLA. Therefore, we created an account for them, and they were able to implement and create an integration of ["Crystal Island: EcoJourneys"](https://sites.google.com/ncsu.edu/intellimedia-ecojourneys/) with LiveKitMMLA. This would stream audio, video, and game logs (Unity-based) to a room created in LiveKitMMLA. During this collaboration, we also realized that in order to save application logs, we needed to write our own text/data saving plugin, as LiveKit egress only supports audio and video. So, we wrote a separate text egress plugin aptly named [`livekit-text-egress-actor`](https://github.com/oele-isis-vanderbilt/livekit-text-egress-actor). 
+
+The actual test of the LiveKitMMLA integration was scheduled for the [I-ACT](https://sites.google.com/ncsu.edu/intellimedia-iact/) study in April 2024, which will took place at [Brown County Middle School in Nashville, Indiana](http://www.browncountyschools.com/school/brown-county-middle-school/). This provided a practical opportunity to evaluate the effectiveness of the LiveKit implementation in a real-world educational setting.
+
+## I-ACT Study: Spring 2024
+![alt text](/images/DaysOfCollection/iact-deployment-plana.png)
+*LiveKit-EcoJourneys cloud deployment plan for I-ACT study, Spring 2024*
+
+![Deployment Plans for I-ACT](/images/DaysOfCollection/iact-deployment.png)
+*LiveKit-EcoJourneys local deployment plan for I-ACT study, Spring 2024*
 
 ## Practical Outcomes and Experiences
 
 ## Lessons Learned and Best Practices
 
 ## The Road Ahead
-
-## Conclusion
 
 ## Call To Action
 
