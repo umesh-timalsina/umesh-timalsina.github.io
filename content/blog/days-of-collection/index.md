@@ -28,7 +28,7 @@ seo:
 4. [GEM-STEP Fall 2023 (GSDCP)](#gemstep-fall-2023-gsdcp)
 5. [The Shift to LiveKit: A Rationale](#the-shift-to-livekit-a-rationale)
 6. [LiveKit Integration: LivekitMMLA](#livekit-integration-livekitmmla)
-7. [IACT Study: Spring 2024](#iact-study-spring-2024)
+7. [IACT Study: Spring 2024](#i-act-study-spring-2024)
 8. [Practical Outcomes and Experiences](#practical-outcomes-and-experiences)
 9. [Lessons Learned and Best Practices](#lessons-learned-and-best-practices)
 10. [The Road Ahead](#the-road-ahead)
@@ -175,7 +175,7 @@ Simply put, LiveKit is an open-source project that enables the creation of scala
 ![LiveKit SFU](/images/DaysOfCollection/lk-sfu.png)
 *A visual representation of LiveKit's SFU architecture*
 
-One of the standout features of the LiveKit ecosystem is that it is completely open-source, and there is comprehensive [documentation](https://github.com/livekit/deploy) available on how to deploy it. LiveKit also offers a wide range of SDKs and APIs, allowing for the development of applications in languages and frameworks such as JavaScript, Python, Rust, Unity, and more. Essentially, it provides a one-stop solution for building video and audio applications.
+One of the standout features of the LiveKit ecosystem is that it is completely open-source, and there is comprehensive [documentation](https://github.com/livekit/deploy) available on how to deploy it. LiveKit also offers a wide range of SDKs and APIs, allowing for the development of applications in languages and frameworks such as JavaScript, Python, Rust, Unity, and more. Essentially, it provides a one-stop solution for building video and audio applications. In note of an earlier point about the diversity of systems used in MMLA research, having a lot of out-of-box support is ideal.
 
 In our specific context, the most significant advantage was LiveKit’s out-of-the-box support for video, audio, and screen, as well as data streaming from the browser, which had been a major bottleneck in our ChimeraPy project. Additionally, LiveKit's [Egress](https://docs.livekit.io/egress-ingress/) feature allows for saving the streams to cloud storage, with synchronization achieved via seconds from the Unix epoch as timestamps for audio and video data. Furthermore, the [Agents](https://docs.livekit.io/agents/) framework in LiveKit offers a streamlined solution for processing and providing feedback on participants' streams. All of these features made it clear that pivoting to LiveKit was the right move for us, and we were ready to make the switch.
 
@@ -225,10 +225,10 @@ Our collaborators at [NC State](https://www.intellimedia.ncsu.edu/people/) were 
 The actual test of the LiveKitMMLA integration was scheduled for the [I-ACT](https://sites.google.com/ncsu.edu/intellimedia-iact/) study in April 2024, which will took place at [Brown County Middle School in Nashville, Indiana](http://www.browncountyschools.com/school/brown-county-middle-school/). This provided a practical opportunity to evaluate the effectiveness of the LiveKit implementation in a real-world educational setting.
 
 ## I-ACT Study: Spring 2024
-![alt text](/images/DaysOfCollection/iact-deployment-plana.png)
+![Cloud Based Deployment Plan for I-ACT](/images/DaysOfCollection/iact-deployment-plana.png)
 *LiveKit-EcoJourneys cloud deployment plan for I-ACT study, Spring 2024*
 
-![Deployment Plans for I-ACT](/images/DaysOfCollection/iact-deployment.png)
+![Local Deployment Plan for I-ACT](/images/DaysOfCollection/iact-deployment.png)
 *LiveKit-EcoJourneys local deployment plan for I-ACT study, Spring 2024*
 
 ## Practical Outcomes and Experiences
