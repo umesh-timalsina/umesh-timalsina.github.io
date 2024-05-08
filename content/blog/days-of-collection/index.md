@@ -29,17 +29,16 @@ seo:
 5. [The Shift to LiveKit: A Rationale](#the-shift-to-livekit-a-rationale)
 6. [LiveKit Integration: LivekitMMLA](#livekit-integration-livekitmmla)
 7. [IACT Study: Spring 2024](#i-act-study-spring-2024)
-8. [Practical Outcomes and Experiences](#practical-outcomes-and-experiences)
-9. [Lessons Learned and Best Practices](#lessons-learned-and-best-practices)
-10. [The Road Ahead](#the-road-ahead)
-11. [Call To Action](#call-to-action)
-12. [Special Mention to Eduardo](#special-mention-to-eduardo)
-13. [Thanks NSF](#thanks-nsf)
+8. [Practical Outcomes, Experiences and Lessons Learned](#practical-outcomes-experiences-and-lessons-learned)
+9. [The Road Ahead](#the-road-ahead)
+10. [Call To Action](#call-to-action)
+11. [Special Mention: Eduardo](#special-mention-eduardo)
+12. [Thanks NSF](#thanks-nsf)
 
 ## Introduction
 In my relative short stint at [Open Ended Learning Environments lab(OELE)](https://wp0.vanderbilt.edu/oele/) at Vanderbilt University, I quickly found that learning science research and the core concepts are way above my pay grade. However, as with any research domain, there are various aspects in which richer computer science theory / tooling can not only streamline the processes in a domain, but also provide richer context and evidences to support / disregard what are the core theories in that domain.  This was my initial days of foraying into multimedia streaming and Multi-modal collection in general. This blog post is a reflection of challenges faced, good and not so good experiences, design decisions and the road ahead for this direction and what I learned from almost an year's worth of work in this domain.
 
-But even before that, my current role came into existence followed by an unfortunate end to a previous [DARPA project](https://github.com/symbench) and thanks to the [NSF Engage AI institute](https://engageai.org) for investing in a Multi-modal learning analytics strand and delegating [OELE](https://wp0.vanderbilt.edu/oele/) as its leader, for which I was hired to develop and test platform and infrastructure for collecting and analysis of Multi-modal data for education, specifically, for the classroom studies conducted with the learning environments like [C2STEM](https://www.c2stem.org/), [Betty's Brain](https://news.vanderbilt.edu/2008/03/11/bettys_brain_motivates_learning/), [GEM-STEP](https://embodiedplay.org/) and [EcoJourneys](https://www.intellimedia.ncsu.edu/projects/) etc... by the researchers in the institute. The eventual goal of this project is to come up with a unified software architecture to collect and process multi-modal data from these learning environments at scale, with a goal to (a.) Automate some of the tedious processes ([discussed more below](#mmla-collection-v1)) within the domain and (b.) Generate meaningful artifacts as feedback to learning environments and researchers for tangible research outcomes as well as enhanced teacher/students' experiences for teaching/learning.   
+But even before that, my current role came into existence followed by an unfortunate end to a previous [DARPA project](https://github.com/symbench) and thanks to the [NSF Engage AI institute](https://engageai.org) for investing in a Multi-modal learning analytics strand and delegating [OELE](https://wp0.vanderbilt.edu/oele/) as its leader, for which I was hired to develop and test platform and infrastructure for collecting and analysis of Multi-modal data for education, specifically, for the classroom studies conducted with the learning environments like [C2STEM](https://www.c2stem.org/), [Betty's Brain](https://news.vanderbilt.edu/2008/03/11/bettys_brain_motivates_learning/), [GEM-STEP](https://embodiedplay.org/) and [EcoJourneys](https://www.intellimedia.ncsu.edu/projects/) etc... by the researchers in the institute. The eventual goal of this project is to come up with a unified software architecture to collect and process multi-modal data from these learning environments at scale, with a goal to (a.) Automate some of the tedious processes within the domain and (b.) Generate meaningful artifacts as feedback to learning environments and researchers for tangible research outcomes as well as enhanced teacher/students' experiences for teaching/learning.   
 
 ## MMLA Collection and Processing
 Multi-modal learning analytics uses data streams of different modalities to analyze and provide feedback to researchers/educators on overall performance of students performing a learning activity, typically using computers. Depending on the nature of the activity, analyses can range from affect detection, log analysis, audio transcription etc... among others. Some of these analytics methods are available in realtime. 
@@ -117,11 +116,13 @@ Joyce discovered the [UMC1820](https://www.behringer.com/product.html?modelCode=
 For accurate vision-based position estimation and camera pose estimation in the gameplay area, we opted to use [Aruco Markers](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html). This combination of technologies allowed us to effectively collect comprehensive data while accommodating the physical and technical constraints of the classroom environment.
 
 ![GSDCP Collection](/images/DaysOfCollection/gsdcp-collection.png)
+
 *The data collection setup for GEMSTEP study of fall 2023. 4 phones, audio interface and a macbook, together with the ChimeraPy server were used to collect data from the classroom*
 
 The data collected was stored on the server and replicated across two SSD disks. Initially, everything worked great; however, upon reviewing the video footage and based on [Ashwin](https://sites.google.com/view/ashwintudur/)'s suggestion, we realized we needed to use the wide-angle cameras in the Pixel 7a, which none of the aforementioned apps supported, barring the Larix broadcaster. However, the setup to make that work was quite complicated. Eventually, we found [CameraFi Live](https://www.camerafi.com/), which enabled us to work with the wide-angle lens in the phone, but required us to host a separate RTMP server on-premises. I found a helpful [blog post](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-video-streaming-server-using-nginx-rtmp-on-ubuntu-20-04) on how to host an RTMP server using NGINX. However, there was a significant delay in the feed and the eventual video that was saved, which Joyce had to do a lot of post-processing on to synchronize everything, a compromise we accepted, leading to the following architecture:
 
 ![GSDCP](/images/DaysOfCollection/gsdcp.png)
+
 *The eventual architecture of the GEM-STEP Classroom Study Data Collection Pipeline*
 
 Overall, during the 45-day-long study (October-November 2023), ChimeraPy and the data collection pipeline we developed managed to collect close to 1 terabyte of data, which our peers eventually used to write an AIED paper. We continue to use this data for vision-based automated interaction analysis (Visualization Timeline). While the study was a relative success, we all recognized that there was room for improvement. Nevertheless, considering the time and space constraints, we were satisfied with the overall endeavor. The github repository is linked [here](https://github.com/oele-isis-vanderbilt/GSDCP.git).
@@ -173,6 +174,7 @@ Similar to a timed video call in conferencing, a classroom study in MMLA has a s
 Simply put, LiveKit is an open-source project that enables the creation of scalable, real-time video and audio applications. It essentially allows developers to build an open-source tool similar to Zoom or Google Meet. At its core, the LiveKit server functions as a Selective Forwarding Unit ([SFU](https://github.com/)) media server. This setup allows participants to join a LiveKit "Room" and send or receive audio to and from other peers in the room. It supports both streaming and video conferencing.
 
 ![LiveKit SFU](/images/DaysOfCollection/lk-sfu.png)
+
 *A visual representation of LiveKit's SFU architecture*
 
 One of the standout features of the LiveKit ecosystem is that it is completely open-source, and there is comprehensive [documentation](https://github.com/livekit/deploy) available on how to deploy it. LiveKit also offers a wide range of SDKs and APIs, allowing for the development of applications in languages and frameworks such as JavaScript, Python, Rust, Unity, and more. Essentially, it provides a one-stop solution for building video and audio applications. In note of an earlier point about the diversity of systems used in MMLA research, having a lot of out-of-box support is ideal.
@@ -197,6 +199,7 @@ This exercise was particularly effective as it allowed me to delve deeper into h
 As we went further in the development of this NextJS app, Eduardo and Me came to the conclusion that rather than building one-off solutions for the individual use cases, we need to come up with a generic solution that we could repurpose and enhance for all the studies within OELE and the Institute in general. This is when we brewed the idea for "LiveKitMMLA: LiveKit integration for various MMLA tasks". Our idea was to provide an orchestration dashboard that various learning environments could reuse to preview and record data for the classroom studies, provided they integrate with our ecosystem. The overall architecture would look like the following:
 
 ![LiveKitMMLA Architecture](/images/DaysOfCollection/livekit-mmla-arch.png)
+
 *Proposed LiveKitMMLA Architecture*
 
 Basically, we would create a backend for generating user tokens and managing room recordings, as well as comprehensive user management. A dashboard would be used to preview and record data, and an IoT client for streaming from local peripheral devices, as well as integration channels for various learning environments to join LiveKit rooms.
@@ -204,6 +207,7 @@ Basically, we would create a backend for generating user tokens and managing roo
 While trying to refactor the NextJS app to fit this pursuit, I quickly realized that we would require a more comprehensive solution than just a NextJS server-side solution. For example, I wanted to integrate IoT client support within the NextJS app, which was not the ideal use case for NextJS. So, eventually, we decided to plan the LiveKitMMLA backend, following in the footsteps of the LiveKit ecosystem. We planned the following components for the backend:
 
 ![LiveKitMMLA Backend](/images/DaysOfCollection/livekit-mmla-backend.png)
+
 *LiveKitMMLA Backend Components*
 
 The LiveKitMMLA backend consists of the following components:
@@ -225,20 +229,123 @@ Our collaborators at [NC State](https://www.intellimedia.ncsu.edu/people/) were 
 The actual test of the LiveKitMMLA integration was scheduled for the [I-ACT](https://sites.google.com/ncsu.edu/intellimedia-iact/) study in April 2024, which will took place at [Brown County Middle School in Nashville, Indiana](http://www.browncountyschools.com/school/brown-county-middle-school/). This provided a practical opportunity to evaluate the effectiveness of the LiveKit implementation in a real-world educational setting.
 
 ## I-ACT Study: Spring 2024
+In March 2024, we were tasked with building and planning a data collection pipeline for an upcoming I-ACT study at [Brown County Middle School, Indiana](http://www.browncountyschools.com/school/brown-county-middle-school/). The study would use ["Crystal Island: EcoJourneys"](https://sites.google.com/ncsu.edu/intellimedia-ecojourneys/), a 3D game that students would play to learn about aquatic ecosystems and pollution on an island in the Philippines. This integration presented significant challenges due to the following factors:
+
+(a) Integration and collaboration were required across multiple teams at [IU](https://https://bloomington.iu.edu/index.html), [NC State](https://ncsu.edu), and [Vanderbilt](https://vanderbilt.edu).  
+(b) The system to be used was still under active development.  
+(c) There was uncertainty about whether everything could be delivered through cloud deployment.  
+
+Additionally, the original dates for the study were moved 15 days earlier than anticipated, making this task particularly challenging.
+
+Based on the classroom layout provided by the IU team, students would play the game in teams of four, as the study focused on collaborative learning. The plan involved using tabletop microphones to capture group audio, cameras positioned to record classroom video from multiple angles, and individual audio and video recording for each student. The figure below illustrates this setup:
+
+![Classroom Layout for I-ACT](/images/DaysOfCollection/i-act-layout.png)
+
+*Classroom layout and data collection plan for I-ACT study, spring 2024*
+
+In addition to the audio and video modalities, we also intended to collect game play logs using the same setup. The idea was to collect synchronized audio, video and text streams through LiveKitMMLA. Overall, this was a relatively complicated setup with multiple pieces, enumerated below:
+
+1. **GAME (Unity + WebGL based)**: Game play with capabilities to send logs/audio/video streams 
+2. **Token Server For the game (Python)**: Permissions based token generation for streaming data for the game
+3. **Data Preview Dashboard (NextJS)**: Data preview/recording dashboard
+4. **LiveKit MMLA Api (Rust)**: API for controlling/orchestrating everything 
+5. **LiveKit MMLA sharing app (NextJS)**: Camera/Microphone Sharing app
+6. **LiveKit Server (Go)**: WebRTC SFU server
+7. **Livekit Egress (Go)**: Data Recorder
+8. **S3 Bucket (Minio/AWS S3)**: Data Recording Destination
+9. **Text Egress Server (Rust)**: Data Recorder for textual data
+
+We not only needed to ensure that everything functioned cohesively but also had to thoroughly test this setup in advance. Testing proved challenging because replicating the classroom environment at OELE was required. At this stage, the integration between the game and LiveKitMMLA was functioning well, but we hadn't yet tested the system at scale. Initially, we were prepared for cloud based deployment of the systems, rendering the following deployment plan(figure below), most of which was achieved using GitHub actions.
+
 ![Cloud Based Deployment Plan for I-ACT](/images/DaysOfCollection/iact-deployment-plana.png)
+
 *LiveKit-EcoJourneys cloud deployment plan for I-ACT study, Spring 2024*
 
+However, we were uncertain about the school's bandwidth, which made it difficult to guarantee that everything could be delivered from the cloud. Given the tight deadlines, we opted for a local setup, which proved to be more challenging than expected. Firstly, we anticipated using each system in insecure contexts (HTTP) by bypassing browser security constraints, but this was not possible in the WebGL context. The process became cumbersome due to the unusual nature of the links, as we had to access various systems using the `http://server-ip:port` scheme. This added significant cognitive load for researchers and educators using the system. Additionally, security was a concern since LiveKit was also deployed in an insecure context.
+
+To address this issue, we experimented with [MkCert](https://github.com/FiloSottile/mkcert) to generate fake security certificates and copied the server's root CA to all client machines. However, we didn't have access to the actual laptops that would be used in the study, as they were located in Indiana. Distributing the root CA across 20 machines would have been tedious regardless. To make matters worse, the LiveKit local deployment did not trust the self-signed certificates, rendering this solution ineffective for our requirements.
+
+Finally, we realized that this local deployment plan needed to be more robust. Further research suggested that modifying the router configuration to point to a local [DNS server](https://thekelleys.org.uk/dnsmasq/doc.html) to make fake domain names accessible over a LAN would be a feasible solution. However, trusted certificates were still required for HTTPS accessibility. At this point, we considered hosting our own [LAN certification authority](https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/), but we didn't have the time or resources.
+
+Instead, we decided on a workaround. We already owned the domain `livekit-mmla.org` and had generated certificates for it using Let's Encrypt on an EC2 instance. To make this work, we generated Let's Encrypt certificates for local domains (e.g., `dashboard.local.livekit-mmla.org`, `ecojourneys.local.livekit-mmla.org`) on an AWS EC2 instance, and copied these certificates to the local server. With this configuration and the duplicated certificates, the dockerized LAN deployment plan worked seamlessly.
+
+The deployment files for the LiveKit-EcoJourneys LAN setup can be found in [this GitHub repository](https://github.com/oele-isis-vanderbilt/livekit-ecojourneys-deployment), as shown in the figure below:
+
 ![Local Deployment Plan for I-ACT](/images/DaysOfCollection/iact-deployment.png)
+
 *LiveKit-EcoJourneys local deployment plan for I-ACT study, Spring 2024*
 
-## Practical Outcomes and Experiences
+With this deployment plan, we were able to set up and test everything, and the preliminary results were promising. After wrapping up the tests at Vanderbilt, I packed my bags along with the server, microphones, router, and everything else needed, and drove to Bloomington, Indiana, in mid-April 2024. Upon visiting the classroom, we realized that the server and router could be stored there. On the first day of the study, we successfully collected 40-50 student audio, video, and text streams. However, we were short on microphones and decided to purchase a few tabletop microphones.
 
-## Lessons Learned and Best Practices
+![Classroom for I-ACT Study, April 2024](/images/DaysOfCollection/i-act-classroom.png)
+
+*Classroom for I-ACT Study, April 2024*
+
+As the days progressed, we improved on prior results, streamlining the collection of group audio, classroom videos, and gameplay logs. Everything went smoothly, and over the five days of the study, we managed to collect nine gigabytes of data. The data was stored in the local minio deployment.
+
+![Videos from the classroom](/images/DaysOfCollection/classroom-videos.png)
+
+*Preview of the data collected in the I-ACT study, April 2024*
+
+During one of the days, we tested the cloud setup since we had access to the school's internet. To our surprise, the cloud-based deployment worked well for 10 participants. We then realized that a cloud-based setup would be ideal for future studies at the school.
+
+Overall, the outcome of the study was positive, and we were able to collect the multimodal data as anticipated using LiveKitMMLA, despite it being the first time the system was used. During the study, we made room creation configurable via Google Sheets, allowing room names to be date-specific. This proved useful since we had configured Egress to save streams by room name. Across the five days, we successfully achieved the following path structure in `minio`:
+
+![Saved data files](/images/DaysOfCollection/pathstructure.png)
+
+*Path structure in minio for LiveKitMMLA I-ACT study data collection*
+
+For each audio/video stream, depending on the codec used for streaming (LiveKit supports a variety of codes), we were able to save `mp4/webm/ogg` files, as depicted below:
+
+![alt text](/images/DaysOfCollection/minio-files.png)
+
+Apart from the actual file, each file also saves a corresponding `metadata.json`, with the following keys:
+
+```json
+"egress_id": "Unique ID for this egress operation"
+"room_id": "Room ID for this egress operation",
+"room_name": "Room name for which the egress was run on"
+"started_at": "Seconds since unix epoch when this operation started"
+"publisher_id": "Participant ID"
+"track_id": "Track ID"
+"track_kind": "AUDIO|VIDEO"
+"track_source": "CAMERA|MIC|SCREEN_SHARE"
+```
+
+With the metadata.json and `started_at` key, the offset calculations for each streams are trivial and we are able to achieve a single, unified timeline for the whole room experience. Apart from the audio and video logs, we followed the footsteps of the **LiveKit Egress** to save the textual data using similar S3 paths as well as metadata.
+
+
+## Practical Outcomes, Experiences and Lessons Learned
+Regarding LiveKit integration, we initially used a manual egress mechanism where recordings only started with a button press and users had to select which track to record. However, this approach has limitations. For instance, in the I-ACT study, I had to manually select 40 participants and start text egress separately. Additionally, disruptions in the learning environment could cause participants to join and leave LiveKit rooms sporadically, leading to recording restarts and timeline gaps. 
+
+Overall, this research software tooling endeavor has been a rewarding learning experience for us. We finally had the opportunity to use Rust in one of our production systems, which I had always wanted to do. From debugging time alignments in ChimeraPy nodes to learning how to host an RTMP server, we've tackled a wide array of challenges. We have now incorporated four languages, a plethora of technologies, and various open-source projects into our ecosystem.
+
+As with any field, the more you immerse yourself in it, the better you become. We've made many design decisions that needed eventual refactoring, but each challenge provided valuable lessons. For instance, in hindsight, relying on a single-language (Python + JS) solution for a project of this scale and diversity was unrealistic. We've also learned to prioritize developing applications that add value to the research projects within the institute rather than focusing exclusively on tooling. Despite any flaws in the software aspects, we can iterate if the minimum viable project is functioning.
+
+Despite the challenges, our efforts have been fruitful. With different versions of the MMLA Pipeline software, we successfully collected data in real-world classroom settings. This data has contributed to numerous research projects and publications within OELE and improving integration among various partners in the EngageAI Institute.
+
+
 
 ## The Road Ahead
+The road ahead is promising. At the institutional level, numerous multimodal analytics research projects are ongoing and nearly production-ready. At this point, different aspects of the MMLA Pipeline not only support data collection but also facilitate analysis and feedback. We've conducted several integration studies with the learning environments used within the institution, mainly focused on data collection. Through these studies, we've identified numerous opportunities for enhanced analysis and feedback integration. We plan to incorporate institutional research to refine this feedback for multiple learning environments.
+
+At the same time, we aim to implement several software engineering improvements. While the dashboard UI performs well for 20-30 simultaneous streams, it requires paginated views and proper planning to handle hundreds of streams. The current architecture supports only a single LiveKit server configuration and one S3 storage location. Over the summer, we plan to adjust the backend so that users conducting multimodal data collection for MMLA can utilize their own LiveKit deployments and storage, further streamlining the process. This would position LiveKit MMLA as primarily an orchestrator with access to user and project resources. Additionally, to address the recording issues, implementing an **Auto Egress** mechanism would automatically start and stop recording as participants enter or leave rooms, which we intend to refactor.
+
+Additionally, we intend to invest significant software engineering efforts in the LiveKit IoT client to better support data collection from various sensors and local devices, thereby meeting our needs comprehensively.
+
+Finally, we are considering changing the name "LiveKitMMLA," primarily to explore new ideas and meet our exposure needs.
+
 
 ## Call To Action
+We invite researchers, educators and developers interested in MMLA to collaborate with us on the MMLA Pipeline. Join us to shape a comprehensive, scalable solution that advances educational research.
 
-## Special Mention to Eduardo
+By contributing to our open-source project, you can help refine real-time data collection, analysis, and feedback methods that empower learning environments. Together, we can address integration and feedback challenges while improving educational outcomes.
+
+If you have any questions/suggestions, please reachout to [me](mailto:umesh.timalsina@vanderbilt.edu) or [Eduardo](mailto:eduardo.davalos.anaya@vanderbilt.edu). 
+
+
+## Special Mention: Eduardo
+A special note of graditude to [Eduardo](https://wp0.vanderbilt.edu/oele/eduardo-davalos/) for his invaluable contributions to this endeavor and for the countless brainstorming sessions we've shared. Your creativity and dedication have significantly shaped this project.
 
 ## Thanks NSF
+A sincere thank you to the [NSF Engage AI Institute](https://engageai.org/) for supporting a multimodal learning analytics strand and designating [OELE](https://wp0.vanderbilt.edu/oele) as its leader. Your investment has empowered us to build a unified software architecture that streamlines tasks while delivering crucial feedback to improve educational research and enrich learning experiences.
