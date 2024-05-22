@@ -343,8 +343,7 @@ We invite researchers, educators and developers interested in MMLA to collaborat
 
 By contributing to our open-source project, you can help refine real-time data collection, analysis, and feedback methods that empower learning environments. Together, we can address integration and feedback challenges while improving educational outcomes.
 
-If you have any questions/suggestions, please reachout to [me](mailto:umesh.timalsina@vanderbilt.edu)  or [Eduardo](mailto:eduardo.davalos.anaya@vanderbilt.edu). 
-
+If you have any questions/suggestions, please reachout at `umesh.timalsina@vanderbilt.edu` or `eduardo.davalos@vanderbilt.edu`.
 
 ## Special Mention: Eduardo
 A special note of graditude to [Eduardo](https://wp0.vanderbilt.edu/oele/eduardo-davalos/) for his invaluable contributions to this endeavor and for the countless brainstorming sessions we've shared. Your creativity and dedication have significantly shaped this project.
