@@ -263,7 +263,7 @@ We not only needed to ensure that everything functioned cohesively but also had 
 
 ![Cloud Based Deployment Plan for I-ACT](/images/DaysOfCollection/iact-deployment-plana.png)
 
-*LiveKit-EcoJourneys cloud deployment plan for I-ACT study, Spring 2024*
+*SyncFlow-EcoJourneys cloud deployment plan for I-ACT study, Spring 2024*
 
 However, we were uncertain about the school's bandwidth, which made it difficult to guarantee that everything could be delivered from the cloud. Given the tight deadlines, we opted for a local setup, which proved to be more challenging than expected. Firstly, we anticipated using each system in insecure contexts (HTTP) by bypassing browser security constraints, but this was not possible in the WebGL context. The process became cumbersome due to the unusual nature of the links, as we had to access various systems using the `http://server-ip:port` scheme. This added significant cognitive load for researchers and educators using the system. Additionally, security was a concern since LiveKit was also deployed in an insecure context.
 
