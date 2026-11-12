@@ -155,6 +155,7 @@
   venue: "Scientific Programming 2020, 8867380"
   year: 2020
   type: journal
+  featured: true
 
 # ---------------------------------------------------------------- 2019
 - title: "Incentivizing Services Sharing in IoT with OSGi and HashGraph"
