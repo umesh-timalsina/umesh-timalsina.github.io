@@ -1,39 +1,35 @@
 ---
-title: "About Me"
-description: ""
-summary: ""
+title: "About"
+description: "Research engineer at Vanderbilt University working on multimodal learning analytics infrastructure."
 date: 2023-09-07T16:21:44+02:00
-lastmod: 2023-09-07T16:21:44+02:00
+lastmod: 2024-04-25T16:21:44+02:00
 draft: false
-weight: 50
-categories: []
-tags: []
-contributors: []
-pinned: false
-homepage: false
 seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: true # false (default) or true
+  title: "About Umesh Timalsina"
+  description: "Background, research focus and education of Umesh Timalsina, research engineer at ISIS, Vanderbilt University."
+  canonical: ""
+  noindex: false
 ---
 
+I'm a research engineer at the [Institute for Software Integrated Systems (ISIS)](https://www.isis.vanderbilt.edu) at Vanderbilt University. I work with the [Open-Ended Learning Environments lab](https://wp0.vanderbilt.edu/oele/) on the multimodal learning analytics (MMLA) strand of the NSF [EngageAI Institute](https://engageai.org/).
 
-The one in the right is me :).
+## What I work on
 
+Classroom research increasingly depends on data from many sources at once: audio and video, screen recordings, eye trackers and application logs, often from dozens of students simultaneously. I build the systems that make this kind of data collection reliable, synchronized and privacy-conscious, so researchers can focus on the learning science.
 
-{{< img process="fill 1800x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/umesh.png" alt="Umesh Timalsina and Diwakar Jha" >}}
+- **[SyncFlow](https://github.com/oele-isis-vanderbilt/SyncFlow)**: a LiveKit/WebRTC platform with a Rust backend for synchronized multimodal data collection. It has been used in classroom studies with partner learning environments.
+- **[ChimeraPy](https://github.com/ChimeraPy)**: a distributed Python framework for real-time multimodal data collection and processing.
 
+I wrote about how this work evolved in [*Days of Collection, Days of Despair*](/blog/days-of-collection-days-of-despair/).
 
-I am is a Research Engineer at Institute For Software Integrated Systems at [Vandy](https://www.isis.vanderbilt.edu), working on projects for [EngageAI Institute](https://engageai.org/), specifically multi-modal learning analytics strand, with the [Open Ended Learning Environments Lab](https://wp0.vanderbilt.edu/oele/).
+Before my current role, I worked at ISIS on [Symbench](https://github.com/symbench), a DARPA-funded design-automation project.
 
-I am from [Nepal](https://en.wikipedia.org/wiki/Nepal). 
+## Background
 
-In may 2019, I received by Masters degree in Computer Science from [SIU Carbondale](https://siu.edu). There, I worked under Dr. Andy Wang 
-in problems related to Natural language Processing as a graduate research assistant. I also worked under professor Wen chi Hou in databases and a novel 
-[`multi-join`](https://github.com/multijoin-hub/) algorithm.
+I'm originally from [Nepal](https://en.wikipedia.org/wiki/Nepal). I received my M.S. in Computer Science from [Southern Illinois University Carbondale](https://siu.edu) in May 2019. There, I was a graduate research assistant with Dr. Andy Wang working on natural language processing. I also worked with Prof. Wen-Chi Hou on database research, including a novel [multi-join](https://github.com/multijoin-hub/) algorithm.
 
-I am an electrical engineer by trade and went to [Institute of Engineering, Thapathali Campus](https://www.tcioe.edu.np/) for an undergraduate degree in Electronics and Communication Engineering.
+I hold a bachelor's degree in Electronics and Communication Engineering from the [Institute of Engineering, Thapathali Campus](https://www.tcioe.edu.np/).
 
+## Outside work
 
-*Thank You for reading!*
+I host [The Banal Podcast](https://thebanalpodcast.com), and I enjoy photography ([a few snaps](/snaps/)), the outdoors and good vegetarian food.

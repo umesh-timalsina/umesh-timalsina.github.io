@@ -1,0 +1,21 @@
+# Publications shown on /publications/ (newest first) and on the homepage (top 3).
+# TODO(Umesh): replace the example below with your real publications.
+#
+# Fields:
+#   title:   Paper title
+#   authors: [list of names]  — "Umesh Timalsina" is bolded automatically
+#   venue:   Conference / journal / workshop
+#   year:    2024
+#   type:    conference | journal | workshop | preprint | poster
+#   links:   [{label: PDF, url: ...}, {label: DOI, url: ...}, {label: Code, url: ...}]
+#   note:    optional, e.g. "Best Paper Award"
+#   example: true  — entries marked example are hidden in production builds
+
+- title: "Example: Title of a paper on multimodal data collection"
+  authors: ["Umesh Timalsina", "Co-Author One", "Co-Author Two"]
+  venue: "Proceedings of an Example Conference"
+  year: 2024
+  type: conference
+  example: true
+  links:
+    - { label: PDF, url: "#" }

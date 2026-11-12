@@ -1,0 +1,62 @@
+# Projects shown on /projects/ (and on the homepage when featured: true).
+# Fields: title, summary, role, years, tags[], featured, links[{label, url}]
+- title: SyncFlow
+  summary: >-
+    A WebRTC-based platform, built on LiveKit, for synchronized multimodal data
+    collection in classrooms. It streams and records audio, video, screen and
+    application events from many participants onto a single timeline, and is
+    deployed in classroom studies.
+  role: Lead developer
+  years: 2023 – present
+  tags: [Rust, LiveKit, WebRTC, Next.js, PostgreSQL, AWS]
+  featured: true
+  links:
+    - { label: Code, url: "https://github.com/oele-isis-vanderbilt/SyncFlow" }
+    - { label: Write-up, url: "/blog/days-of-collection-days-of-despair/" }
+
+- title: ChimeraPy
+  summary: >-
+    A distributed computing framework for real-time multimodal data collection
+    and processing. Python nodes form a DAG across machines, coordinated by an
+    orchestrator, and power the lab's first classroom MMLA pipelines.
+  role: Core contributor
+  years: 2023
+  tags: [Python, Distributed systems, Real-time streaming]
+  featured: true
+  links:
+    - { label: Code, url: "https://github.com/ChimeraPy/Engine" }
+    - { label: Organization, url: "https://github.com/ChimeraPy" }
+
+- title: GEM-STEP Data Collection Pipeline (GSDCP)
+  summary: >-
+    Multimodal data collection for the GEM-STEP embodied learning environment,
+    first built on ChimeraPy for a Fall 2023 classroom study and later rebuilt
+    on LiveKit with Next.js and S3, which became the starting point for SyncFlow.
+  role: Developer
+  years: 2023
+  tags: [Next.js, LiveKit, AWS S3, Classroom studies]
+  featured: true
+  links:
+    - { label: Code, url: "https://github.com/oele-isis-vanderbilt/GSDCP" }
+
+- title: Multi-join
+  summary: >-
+    Research on a novel multi-way join algorithm for relational databases,
+    carried out with Prof. Wen-Chi Hou at Southern Illinois University.
+  role: Graduate researcher
+  years: 2018 – 2019
+  tags: [Databases, Algorithms]
+  featured: false
+  links:
+    - { label: Code, url: "https://github.com/multijoin-hub/" }
+
+- title: Median String with MapReduce
+  summary: >-
+    A Hadoop MapReduce formulation of the median string (motif finding)
+    problem for DNA sequences.
+  role: Author
+  years: 2019
+  tags: [Hadoop, Bioinformatics]
+  featured: false
+  links:
+    - { label: Write-up, url: "/blog/how-to-go-about-solving-the-median-string-algorithm-using-mapreduce/" }

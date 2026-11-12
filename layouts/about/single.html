@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{- $p := site.Params.profile }}
+{{ partial "page-header.html" . }}
+<div class="container section-tight about-layout">
+  <aside class="about-card">
+    {{ partial "avatar.html" (dict "size" 160) }}
+    <p class="about-name">{{ $p.name }}</p>
+    <p class="muted">{{ $p.role }}<br>{{ $p.affiliationShort }}</p>
+    {{- with $p.location }}<p class="muted with-icon">{{ partial "icon.html" "map-pin" }}{{ . }}</p>{{ end }}
+    {{ partial "social-links.html" (dict "labels" true) }}
+    <a class="btn btn-secondary btn-block" href="/cv/">{{ partial "icon.html" "file-text" }}View CV</a>
+  </aside>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

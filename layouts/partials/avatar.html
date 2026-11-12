@@ -1,0 +1,11 @@
+{{- /* Headshot from params.profile.headshot (an assets/ path) or a monogram fallback. Context: dict "size" (px). */ -}}
+{{- $p := site.Params.profile }}
+{{- $size := .size | default 160 }}
+{{- with and $p.headshot (resources.Get $p.headshot) }}
+  {{- $img := .Fill (printf "%dx%d Center webp q85" (mul $size 2) (mul $size 2)) }}
+  <img class="avatar" src="{{ $img.RelPermalink }}" width="{{ $size }}" height="{{ $size }}" alt="Portrait of {{ $p.name }}" loading="eager" decoding="async">
+{{- else }}
+  {{- $initials := "" }}
+  {{- range split $p.name " " }}{{ $initials = printf "%s%s" $initials (substr . 0 1) }}{{ end }}
+  <span class="avatar avatar-monogram" style="--avatar-size: {{ $size }}px" role="img" aria-label="{{ $p.name }}">{{ $initials }}</span>
+{{- end }}

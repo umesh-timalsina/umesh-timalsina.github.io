@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{ partial "page-header.html" . }}
+<div class="container narrow section-tight">
+  {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  {{- range .Pages.ByDate.Reverse.GroupByDate "2006" }}
+  <section class="year-group">
+    <h2 class="year-heading">{{ .Key }}</h2>
+    <div class="post-list">
+      {{- range .Pages }}{{ partial "post-item.html" . }}{{ end }}
+    </div>
+  </section>
+  {{- end }}
+</div>
+{{ end }}

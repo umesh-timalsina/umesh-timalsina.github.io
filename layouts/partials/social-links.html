@@ -1,0 +1,17 @@
+{{- /* Icon links for the profile's accounts. Context: dict "labels" (bool) to show text labels. */ -}}
+{{- $p := site.Params.profile }}
+{{- $links := slice }}
+{{- with $p.email }}{{ $links = $links | append (dict "name" "Email" "url" (printf "mailto:%s" .) "icon" "mail") }}{{ end }}
+{{- with $p.github }}{{ $links = $links | append (dict "name" "GitHub" "url" . "icon" "brand-github") }}{{ end }}
+{{- with $p.linkedin }}{{ $links = $links | append (dict "name" "LinkedIn" "url" . "icon" "brand-linkedin") }}{{ end }}
+{{- with $p.scholar }}{{ $links = $links | append (dict "name" "Google Scholar" "url" . "icon" "school") }}{{ end }}
+{{- with $p.orcid }}{{ $links = $links | append (dict "name" "ORCID" "url" . "icon" "id") }}{{ end }}
+<ul class="social-links{{ if .labels }} with-labels{{ end }}">
+  {{- range $links }}
+  <li>
+    <a href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener me"{{ end }}{{ if not $.labels }} aria-label="{{ .name }}" title="{{ .name }}"{{ end }}>
+      {{ partial "icon.html" .icon }}{{ if $.labels }}<span>{{ .name }}</span>{{ end }}
+    </a>
+  </li>
+  {{- end }}
+</ul>

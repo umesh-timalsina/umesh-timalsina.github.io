@@ -1,0 +1,37 @@
+# Experience and education shown on /cv/.
+# TODO(Umesh): verify dates and add any missing roles.
+experience:
+  - title: Research Engineer
+    org: Institute for Software Integrated Systems, Vanderbilt University
+    url: https://www.isis.vanderbilt.edu
+    location: Nashville, TN
+    period: "" # e.g. "2019 – present"
+    points:
+      - >-
+        Builds infrastructure for multimodal learning analytics in the
+        Open-Ended Learning Environments (OELE) lab, as part of the NSF
+        EngageAI Institute.
+      - >-
+        Leads development of SyncFlow, a LiveKit/WebRTC platform for
+        synchronized classroom data collection, and contributed to ChimeraPy.
+      - >-
+        Previously worked on Symbench, a DARPA program project at ISIS.
+
+  - title: Graduate Research Assistant
+    org: Southern Illinois University Carbondale
+    url: https://siu.edu
+    location: Carbondale, IL
+    period: "" # e.g. "2017 – 2019"
+    points:
+      - Natural language processing research with Dr. Andy Wang.
+      - Database research on a novel multi-join algorithm with Prof. Wen-Chi Hou.
+
+education:
+  - degree: M.S., Computer Science
+    org: Southern Illinois University Carbondale
+    url: https://siu.edu
+    period: "2019"
+  - degree: B.E., Electronics and Communication Engineering
+    org: Institute of Engineering, Thapathali Campus, Tribhuvan University
+    url: https://www.tcioe.edu.np/
+    period: ""

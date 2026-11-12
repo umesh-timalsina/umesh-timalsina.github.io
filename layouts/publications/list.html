@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{ partial "page-header.html" . }}
+<div class="container narrow section-tight">
+  {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  {{- $pubs := partial "publications-list.html" . }}
+  {{- with $pubs }}
+    {{- $years := slice }}
+    {{- range . }}{{ $years = $years | append .year }}{{ end }}
+    {{- range $year := $years | uniq }}
+    <section class="year-group">
+      <h2 class="year-heading">{{ $year }}</h2>
+      <div class="pub-list">
+        {{- range where $pubs "year" $year }}{{ partial "publication.html" . }}{{ end }}
+      </div>
+    </section>
+    {{- end }}
+  {{- else }}
+  <p class="muted">Publications will be listed here soon.</p>
+  {{- end }}
+  {{- with site.Params.profile.scholar }}
+  <p><a class="link-arrow" href="{{ . }}" rel="noopener">Full list on Google Scholar{{ partial "icon.html" "arrow-up-right" }}</a></p>
+  {{- end }}
+</div>
+{{ end }}

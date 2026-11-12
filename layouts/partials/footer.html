@@ -1,0 +1,30 @@
+{{- $p := site.Params.profile }}
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-id">
+      <p class="footer-name">{{ $p.name }}</p>
+      <p class="muted">{{ $p.role }}, <a href="{{ $p.affiliationUrl }}" rel="noopener">{{ $p.affiliationShort }}</a></p>
+      {{ partial "social-links.html" (dict "labels" false) }}
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div>
+        <p class="footer-heading">Site</p>
+        <ul>
+          {{- range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Personal</p>
+        <ul>
+          {{- range site.Menus.personal }}
+          <li><a href="{{ .URL }}"{{ if hasPrefix .URL "http" }} rel="noopener"{{ end }}>{{ .Name }}</a></li>
+          {{- end }}
+          {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .RelPermalink }}">RSS feed</a></li>{{ end }}
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="container footer-legal">
+    <p class="muted">© {{ now.Year }} {{ site.Copyright | default $p.name }}</p>
+  </div>
+</footer>

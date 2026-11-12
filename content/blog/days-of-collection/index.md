@@ -5,6 +5,7 @@ summary: "A tale of evolution from ChimeraPy to SyncFlow"
 date: 2024-04-25T16:27:22+02:00
 lastmod: 2024-04-25T16:27:22+02:00
 draft: false
+toc: true
 weight: 50
 categories: []
 tags: ["tech"]
@@ -15,7 +16,7 @@ seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
   canonical: "" # custom canonical URL (optional)
-  noindex: true # false (default) or true
+  noindex: false
 ---
 *Note 1: This document was reviewed and corrected for spelling and grammar with the assistance of AI-based tools.*
 
@@ -23,21 +24,7 @@ seo:
 
 *Note 3: The top level domain used for the IACT study was changed from livekit-mmla.org to syncflow.org for the sake of clarity in the narrative of the blog post.* 
 
-{{< img process="fill 5000x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/DaysOfCollection/syncflow.png" alt="syncflow.png" >}}
-
-## Contents
-1. [Introduction](#introduction)
-2. [MMLA Collection and Processing](#mmla-collection-and-processing)
-3. [The V1: ChimeraPy](#the-v1-chimerapy)
-4. [GEM-STEP Fall 2023 (GSDCP)](#gemstep-fall-2023-gsdcp)
-5. [The Shift to LiveKit: A Rationale](#the-shift-to-livekit-a-rationale)
-6. [LiveKit Integration: SyncFlow](#livekit-integration-syncflow)
-7. [IACT Study: Spring 2024](#i-act-study-spring-2024)
-8. [Practical Outcomes, Experiences and Lessons Learned](#practical-outcomes-experiences-and-lessons-learned)
-9. [The Road Ahead](#the-road-ahead)
-10. [Call To Action](#call-to-action)
-11. [Special Mention: Eduardo](#special-mention-eduardo)
-12. [Thanks NSF](#thanks-nsf)
+{{< img process="fill 5000x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/DaysOfCollection/syncflow.png" alt="SyncFlow" >}}
 
 ## Introduction
 In my relative short stint at [Open Ended Learning Environments lab(OELE)](https://wp0.vanderbilt.edu/oele/) at Vanderbilt University, I quickly found that learning science research and the core concepts are way above my pay grade. However, as with any research domain, there are various aspects in which richer computer science theory / tooling can not only streamline the processes in a domain, but also provide richer context and evidences to support / disregard what are the core theories in that domain.  This was my initial days of foraying into multimedia streaming and Multi-modal collection in general. This blog post is a reflection of challenges faced, good and not so good experiences, design decisions and the road ahead for this direction and what I learned from almost an year's worth of work in this domain.

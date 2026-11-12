@@ -15,10 +15,10 @@ seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
   canonical: "" # custom canonical URL (optional)
-  noindex: true # false (default) or true
+  noindex: false
 ---
 
-{{< img process="fill 2100x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/core-nlp.png" alt="A Visual Exploration of Moral Values Across Cultures" >}}
+{{< img process="fill 2100x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/core-nlp.png" alt="Stanford CoreNLP" >}}
 
 
 In this post, I will look into the Stanford core NLP library and its capabilities. Preprocessing text is an important first step in natural language processing. For example you might have some text that you want word tokenize and find out POS Tags for each and every word. Stanford core NLP comes to the rescue in that case. 

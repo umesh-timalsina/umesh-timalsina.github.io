@@ -1,0 +1,11 @@
+{{- /* Context: page. Renders the page title and optional lead/description. */ -}}
+{{- /* Sections whose body uses the full-width container get a matching header. */ -}}
+{{- $wide := in (slice "about" "snaps" "projects") .Section }}
+<header class="page-header">
+  <div class="container{{ if not $wide }} narrow{{ end }}">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{- with .Params.lead | default .Description }}
+    <p class="lead">{{ . | markdownify }}</p>
+    {{- end }}
+  </div>
+</header>

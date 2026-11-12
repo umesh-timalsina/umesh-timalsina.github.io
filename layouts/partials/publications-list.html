@@ -1,0 +1,6 @@
+{{- /* Returns publications from data/publications.yaml, newest first. Example entries are dropped in production. */ -}}
+{{- $pubs := slice }}
+{{- range hugo.Data.publications }}
+  {{- if not (and .example hugo.IsProduction) }}{{ $pubs = $pubs | append . }}{{ end }}
+{{- end }}
+{{- return sort $pubs "year" "desc" }}

@@ -1,0 +1,21 @@
+{{- /* Context: one entry from data/projects.yaml */ -}}
+<article class="card project-card">
+  <header>
+    <h3 class="card-title">{{ .title }}</h3>
+    <p class="card-meta">{{ with .role }}{{ . }}{{ end }}{{ with .years }} · {{ . }}{{ end }}</p>
+  </header>
+  <p class="card-body">{{ .summary }}</p>
+  {{- with .tags }}
+  <ul class="tags" aria-label="Technologies">
+    {{- range . }}<li class="tag">{{ . }}</li>{{ end }}
+  </ul>
+  {{- end }}
+  {{- with .links }}
+  <p class="card-links">
+    {{- range . }}
+    {{- $external := hasPrefix .url "http" }}
+    <a class="link-arrow" href="{{ .url }}"{{ if $external }} rel="noopener"{{ end }}>{{ .label }}{{ partial "icon.html" (cond $external "arrow-up-right" "arrow-right") }}</a>
+    {{- end }}
+  </p>
+  {{- end }}
+</article>

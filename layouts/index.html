@@ -1,60 +1,89 @@
 {{ define "main" }}
-<section class="section container-fluid mt-n3 pb-3">
-  <div class="row justify-content-center">
-    <div class="col-lg-12 text-center">
-      <h1>{{ .Title }}</h1>
+{{- $p := site.Params.profile }}
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">{{ $p.role }} · <a href="{{ $p.affiliationUrl }}" rel="noopener">{{ $p.affiliationShort }}</a></p>
+      <h1 class="hero-title">{{ $p.name }}</h1>
+      <p class="hero-lead">{{ $p.tagline }}</p>
+      <div class="hero-actions">
+        {{- with $p.cv }}<a class="btn btn-primary" href="/cv/">{{ partial "icon.html" "file-text" }}View CV</a>{{ end }}
+        {{- with $p.email }}<a class="btn btn-secondary" href="mailto:{{ . }}">{{ partial "icon.html" "mail" }}Get in touch</a>{{ end }}
+      </div>
+      {{ partial "social-links.html" (dict "labels" false) }}
     </div>
-    <div class="col-lg-9 col-xl-8 text-center">
-      <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <a class="btn btn-primary btn-cta rounded-pill btn-lg my-3" href="/about" role="button">About</a>
+    <div class="hero-portrait">
+      {{ partial "avatar.html" (dict "size" 220) }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+    <h2 class="section-title">About</h2>
+    <div class="prose">
       {{ .Content }}
     </div>
+    {{- with $p.interests }}
+    <h3 class="subhead">Research interests</h3>
+    <ul class="interests">
+      {{- range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{- end }}
+    <p><a class="link-arrow" href="/about/">More about me{{ partial "icon.html" "arrow-right" }}</a></p>
   </div>
 </section>
-{{ end }}
 
-{{ define "sidebar-prefooter" }}
-{{ if site.Params.doks.backgroundDots -}}
-<div class="d-flex justify-content-start">
-  <div class="bg-dots"></div>
-</div>
-{{ end -}}
-
-<section class="section section-md container-fluid bg-light">
-  <div class="row justify-content-center text-center">
-    <div class="col-lg-7">
-      <h2 class="mt-2">Welcome to my webpage!</h2>
-      <p> Glad you are here. I’m on a mission to buff up my brain, polish my prose, and boost my social meter. Think of me as a tech-savvy
-        nature lover with a knack for algorithms and a no-meat menu!</p>
-    </div>
-  </div>
-</section>
-{{ if eq $.Site.Language.LanguageName "English" }}
-<section class="section section-md section-features">
+{{- $featured := where hugo.Data.projects "featured" true }}
+{{- with $featured }}
+<section class="section section-alt">
   <div class="container">
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-5">
-        <h2 class="h4">My Podcast</h2>
-        <p>Checkout The Banal Podcast linked <a href="https://thebanalpodcast.com" target="_blank"> here</a>.</p>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Reach Out</h2>
-        <p>Email: <code>umesh.timalsina26@gmail.com</code></p>
-      </div>
+    <div class="section-head">
+      <h2 class="section-title">Selected projects</h2>
+      <a class="link-arrow" href="/projects/">All projects{{ partial "icon.html" "arrow-right" }}</a>
     </div>
-</section>
-{{ end }}
-{{ end }}
-
-{{ define "sidebar-footer" }}
-{{ if site.Params.doks.sectionFooter -}}
-<section class="section section-md container-fluid bg-light">
-  <div class="row justify-content-center text-center">
-    <div class="col-lg-7">
-      <h2 class="mt-2">Built with doks and hugo</h2>
-      <a class="btn btn-primary rounded-pill px-4 my-2" href="https://github.com/gethyas/doks" role="button">GitHub</a>
+    <div class="grid grid-3">
+      {{- range first 3 . }}{{ partial "project-card.html" . }}{{ end }}
     </div>
   </div>
 </section>
-{{ end -}}
+{{- end }}
+
+{{- $pubs := partial "publications-list.html" . }}
+{{- with $pubs }}
+<section class="section">
+  <div class="container narrow">
+    <div class="section-head">
+      <h2 class="section-title">Recent publications</h2>
+      <a class="link-arrow" href="/publications/">All publications{{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="pub-list">
+      {{- range first 3 . }}{{ partial "publication.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+{{- $posts := where site.RegularPages "Section" "blog" }}
+{{- with $posts }}
+<section class="section{{ if not $pubs }} section-alt{{ end }}">
+  <div class="container narrow">
+    <div class="section-head">
+      <h2 class="section-title">Latest writing</h2>
+      <a class="link-arrow" href="/blog/">All posts{{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="post-list">
+      {{- range first 3 .ByDate.Reverse }}{{ partial "post-item.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<section class="section contact-cta">
+  <div class="container narrow center">
+    <h2 class="section-title">Let’s talk</h2>
+    <p class="lead">I’m happy to talk about multimodal data collection, research infrastructure, or working together.</p>
+    {{- with $p.email }}<a class="btn btn-primary" href="mailto:{{ . }}">{{ partial "icon.html" "mail" }}{{ . }}</a>{{ end }}
+  </div>
+</section>
 {{ end }}

@@ -1,0 +1,46 @@
+{{ define "main" }}
+<article class="article">
+  <header class="article-header">
+    <div class="container narrow">
+      <p class="post-meta">
+        <a href="/blog/">Writing</a>
+        <span aria-hidden="true">·</span>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        <span aria-hidden="true">·</span> {{ .ReadingTime }} min read
+      </p>
+      <h1 class="article-title">{{ .Title }}</h1>
+      {{- with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+      {{- with .GetTerms "tags" }}
+      <ul class="tags" aria-label="Tags">
+        {{- range . }}<li><a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+      </ul>
+      {{- end }}
+    </div>
+  </header>
+
+  <div class="container article-layout{{ if .Params.toc }} has-toc{{ end }}">
+    {{- if .Params.toc }}
+    <aside class="toc" aria-label="On this page">
+      <details open>
+        <summary>On this page</summary>
+        {{ .TableOfContents }}
+      </details>
+    </aside>
+    {{- end }}
+    <div class="prose article-body">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <footer class="container narrow article-footer">
+    <nav class="post-nav" aria-label="More posts">
+      {{- with .PrevInSection }}
+      <a class="post-nav-link next" href="{{ .RelPermalink }}"><span class="muted">Newer</span>{{ .Title }}</a>
+      {{- end }}
+      {{- with .NextInSection }}
+      <a class="post-nav-link prev" href="{{ .RelPermalink }}"><span class="muted">Older</span>{{ .Title }}</a>
+      {{- end }}
+    </nav>
+  </footer>
+</article>
+{{ end }}
