@@ -574,3 +574,24 @@ a.tag:hover {
   max-width: 100%;
   overflow-wrap: anywhere;
 }
+
+.skills {
+  display: grid;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .skills {
+    grid-template-columns: 11rem 1fr;
+  }
+}
+
+.skills dt {
+  font-weight: 600;
+}
+
+.skills dd {
+  margin: 0 0 var(--space-2);
+  color: var(--text-muted);
+}

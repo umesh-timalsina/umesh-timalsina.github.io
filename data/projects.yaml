@@ -1,62 +1,108 @@
-# Projects shown on /projects/ (and on the homepage when featured: true).
+# Projects shown on /projects/ (and the first three featured on the homepage).
 # Fields: title, summary, role, years, tags[], featured, links[{label, url}]
+- title: Betty's Math
+  summary: >-
+    A math assessment and AI-tutoring platform embedded in the OECD's PILA
+    and deployed in a randomized controlled trial across hundreds of schools
+    in France, Germany, the Slovak Republic and Latvia. It includes an LLM
+    tutor with learner-model context, LLM translation and knowledge-graph
+    pipelines, xAPI logging and a real-time teacher dashboard.
+  role: Creator & lead engineer
+  years: 2025 – present
+  tags: [SvelteKit, TypeScript, LLMs, xAPI, RCT]
+  featured: true
+  links: [] # TODO: add a public link if one exists
+
 - title: SyncFlow
   summary: >-
-    A WebRTC-based platform, built on LiveKit, for synchronized multimodal data
-    collection in classrooms. It streams and records audio, video, screen and
-    application events from many participants onto a single timeline, and is
-    deployed in classroom studies.
-  role: Lead developer
+    An open-source WebRTC platform for real-time multimodal classroom data. It
+    sustains 200 concurrent streams at about 200 ms latency and has archived
+    400+ hours (more than 10 TB) for 1,000+ researchers and students. It is
+    deployed in classroom studies in Indiana, Tennessee and North Carolina.
+  role: Creator & lead engineer
   years: 2023 – present
-  tags: [Rust, LiveKit, WebRTC, Next.js, PostgreSQL, AWS]
+  tags: [Rust, Next.js, WebRTC, LiveKit, Tauri, AWS ECS]
   featured: true
   links:
     - { label: Code, url: "https://github.com/oele-isis-vanderbilt/SyncFlow" }
+    - { label: Paper, url: "/publications/" }
     - { label: Write-up, url: "/blog/days-of-collection-days-of-despair/" }
 
 - title: ChimeraPy
   summary: >-
-    A distributed computing framework for real-time multimodal data collection
-    and processing. Python nodes form a DAG across machines, coordinated by an
-    orchestrator, and power the lab's first classroom MMLA pipelines.
+    A distributed streaming framework for real-time multimodal data retrieval
+    and processing, used by 100+ people in Nashville-area classroom studies. I
+    built its orchestration layer, SvelteKit dashboard and pipeline library
+    (video, audio, people tracking, live transcription and video
+    anonymization).
+  role: Co-developer
+  years: 2022 – 2023
+  tags: [Python, ZeroMQ, SvelteKit, WebSockets]
+  featured: true
+  links:
+    - { label: Code, url: "https://github.com/ChimeraPy" }
+    - { label: Paper, url: "/publications/" }
+
+- title: Real-time classroom AI feedback
+  summary: >-
+    Ongoing work on live feedback for classrooms: speech recognition with
+    NVIDIA Riva and AWS Transcribe, computer vision models on edge and cloud
+    (NVIDIA Jetson, AWS, Jetstream2), and on-device LLM summarization of live
+    classroom transcripts.
+  role: Lead engineer
+  years: 2025 – present
+  tags: [NVIDIA Jetson, Riva, Computer vision, On-device LLMs]
+  featured: false
+  links: []
+
+- title: DeepForge
+  summary: >-
+    An NSF-funded visual environment for building and running deep learning
+    pipelines (700+ GitHub stars). I led its Keras parser modernization and
+    Svelte web components, and used it to reproduce a CNN-based photometric
+    redshift study on SDSS galaxy images.
   role: Core contributor
-  years: 2023
-  tags: [Python, Distributed systems, Real-time streaming]
-  featured: true
+  years: 2019 – 2022
+  tags: [JavaScript, Python, Keras, Svelte]
+  featured: false
   links:
-    - { label: Code, url: "https://github.com/ChimeraPy/Engine" }
-    - { label: Organization, url: "https://github.com/ChimeraPy" }
+    - { label: Code, url: "https://github.com/deepforge-dev/deepforge" }
+    - { label: Paper, url: "/publications/" }
 
-- title: GEM-STEP Data Collection Pipeline (GSDCP)
+- title: GMSO & MoSDeF
   summary: >-
-    Multimodal data collection for the GEM-STEP embodied learning environment,
-    first built on ChimeraPy for a Fall 2023 classroom study and later rebuilt
-    on LiveKit with Next.js and S3, which became the starting point for SyncFlow.
+    GMSO is the core topology library of the NSF-funded Molecular Simulation
+    Design Framework (MoSDeF). I led its development, created
+    forcefield-utilities, and set up CI, Docker publishing and release tooling
+    across MoSDeF libraries.
+  role: Lead developer
+  years: 2019 – 2022
+  tags: [Python, Molecular simulation, CI/CD]
+  featured: false
+  links:
+    - { label: Code, url: "https://github.com/mosdef-hub/gmso" }
+
+- title: Symbench design tools
+  summary: >-
+    Tools for DARPA's Symbiotic Design for CPS program: Circuit Maker, a
+    web-based circuit design studio that uses deep learning to predict the
+    next likely component; a Python client for scripted UAV design evaluation;
+    and Fusepack, a genetic-algorithm component placement tool for UAV
+    fuselages.
   role: Developer
-  years: 2023
-  tags: [Next.js, LiveKit, AWS S3, Classroom studies]
-  featured: true
-  links:
-    - { label: Code, url: "https://github.com/oele-isis-vanderbilt/GSDCP" }
-
-- title: Multi-join
-  summary: >-
-    Research on a novel multi-way join algorithm for relational databases,
-    carried out with Prof. Wen-Chi Hou at Southern Illinois University.
-  role: Graduate researcher
-  years: 2018 – 2019
-  tags: [Databases, Algorithms]
+  years: 2019 – 2022
+  tags: [Deep learning, Web, Optimization, Docker]
   featured: false
   links:
-    - { label: Code, url: "https://github.com/multijoin-hub/" }
+    - { label: Organization, url: "https://github.com/symbench" }
 
-- title: Median String with MapReduce
+- title: Surrogate-based hull design optimization
   summary: >-
-    A Hadoop MapReduce formulation of the median string (motif finding)
-    problem for DNA sequences.
-  role: Author
-  years: 2019
-  tags: [Hadoop, Bioinformatics]
+    Deep active learning and surrogate models for underwater vehicle hull
+    design, driven by a combined CAD–CFD simulation pipeline.
+  role: Research engineer
+  years: 2022 – 2024
+  tags: [Deep active learning, Surrogate modeling, CFD]
   featured: false
   links:
-    - { label: Write-up, url: "/blog/how-to-go-about-solving-the-median-string-algorithm-using-mapreduce/" }
+    - { label: Papers, url: "/publications/" }

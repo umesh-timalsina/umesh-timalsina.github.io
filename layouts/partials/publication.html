@@ -1,9 +1,9 @@
 {{- /* Context: one entry from data/publications.yaml */ -}}
-{{- $me := site.Params.profile.name }}
+{{- $me := site.Params.profile.nameVariants | default (slice site.Params.profile.name) }}
 <article class="publication">
   <h3 class="pub-title">{{ .title }}</h3>
   <p class="pub-authors">
-    {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ if eq $a $me }}<strong>{{ $a }}</strong>{{ else }}{{ $a }}{{ end }}{{ end -}}
+    {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ if in $me $a }}<strong>{{ $a }}</strong>{{ else }}{{ $a }}{{ end }}{{ end -}}
   </p>
   <p class="pub-venue"><em>{{ .venue }}</em>{{ with .year }}, {{ . }}{{ end }}{{ with .note }} · <span class="pub-note">{{ . }}</span>{{ end }}</p>
   {{- with .links }}

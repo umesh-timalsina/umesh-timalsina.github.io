@@ -65,6 +65,23 @@
     <p><a class="link-arrow" href="/projects/">Project details{{ partial "icon.html" "arrow-right" }}</a></p>
   </section>
 
+  {{- with $cv.skills }}
+  <section class="cv-section">
+    <h2 class="cv-heading">Technical skills</h2>
+    <dl class="skills">
+      {{- range . }}
+      <dt>{{ .area }}</dt>
+      <dd>{{ .items }}</dd>
+      {{- end }}
+    </dl>
+  </section>
+  {{- end }}
+
+  <section class="cv-section">
+    <h2 class="cv-heading">Publications</h2>
+    <p>{{ len (partial "publications-list.html" .) }} papers and preprints. <a class="link-arrow" href="/publications/">See the full list{{ partial "icon.html" "arrow-right" }}</a></p>
+  </section>
+
   {{- with $p.interests }}
   <section class="cv-section">
     <h2 class="cv-heading">Interests</h2>

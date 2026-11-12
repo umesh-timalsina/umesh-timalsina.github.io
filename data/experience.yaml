@@ -1,37 +1,119 @@
-# Experience and education shown on /cv/.
-# TODO(Umesh): verify dates and add any missing roles.
+# Experience and education shown on /cv/. Source: resume (first pass, Nov 2026).
 experience:
-  - title: Research Engineer
-    org: Institute for Software Integrated Systems, Vanderbilt University
+  - title: System Engineer, Lead
+    org: ICONS (formerly Institute for Software Integrated Systems), Vanderbilt University
     url: https://www.isis.vanderbilt.edu
     location: Nashville, TN
-    period: "" # e.g. "2019 – present"
+    period: "Mar 2025 – Present"
     points:
       - >-
-        Builds infrastructure for multimodal learning analytics in the
-        Open-Ended Learning Environments (OELE) lab, as part of the NSF
-        EngageAI Institute.
+        Created and lead Betty's Math, a SvelteKit/TypeScript math assessment
+        and AI-tutoring platform embedded in the OECD's PILA and deployed in a
+        randomized controlled trial across hundreds of schools in France,
+        Germany, the Slovak Republic and Latvia.
       - >-
-        Leads development of SyncFlow, a LiveKit/WebRTC platform for
-        synchronized classroom data collection, and contributed to ChimeraPy.
+        Integrated an LLM tutor into the student experience, with context built
+        from the problem, the student's current solution, a learner model and
+        progress statistics, plus persistent chat history and prompt logging
+        for evaluation.
       - >-
-        Previously worked on Symbench, a DARPA program project at ISIS.
+        Built LLM pipelines (Claude, GPT) that translate problems, concepts and
+        misconceptions for a four-country deployment and generate knowledge
+        graphs used to assign students to concepts.
+      - >-
+        Built the platform's research layer (RCT sequencing, xAPI event
+        logging and a real-time teacher dashboard), working directly with the
+        OECD team on wording, translations and dashboard design.
+      - >-
+        Lead SyncFlow, an open-source Rust/Next.js/WebRTC platform that
+        sustains 200 concurrent streams at about 200 ms latency and has
+        archived 400+ hours (more than 10 TB) of classroom data for 1,000+
+        researchers and students.
+      - >-
+        Deployed SyncFlow in classroom studies across Indiana, Tennessee and
+        North Carolina for the NSF AI Institute for Engaged Learning, on Amazon
+        ECS and on-premises, and integrated the C2STEM, SPICE, Crystal Island
+        and EcoJourneys learning environments.
+      - >-
+        Building real-time AI feedback for classrooms: speech recognition
+        (NVIDIA Riva, AWS Transcribe), computer vision on edge and cloud, and
+        on-device LLM summarization of live classroom transcripts on NVIDIA
+        Jetson.
+
+  - title: Research Engineer, Senior
+    org: Institute for Software Integrated Systems (ISIS), Vanderbilt University
+    url: https://www.isis.vanderbilt.edu
+    location: Nashville, TN
+    period: "May 2022 – Mar 2025"
+    points:
+      - >-
+        Designed and built SyncFlow from scratch, re-architecting ChimeraPy's
+        cluster-based design into a cloud-first WebRTC platform. Wrote its Rust
+        API, Next.js dashboard, desktop capture app (Tauri, GStreamer) and
+        Node.js and Python client libraries.
+      - >-
+        Co-developed ChimeraPy, a Python/ZeroMQ distributed streaming framework
+        for real-time multimodal data, used by 100+ people in Nashville-area
+        classroom studies. Built its orchestration layer, SvelteKit dashboard
+        and pipeline library.
+      - >-
+        Developed deep active learning and surrogate models for underwater
+        vehicle hull design optimization with a combined CAD–CFD simulation
+        pipeline.
+
+  - title: Research Engineer
+    org: Institute for Software Integrated Systems (ISIS), Vanderbilt University
+    url: https://www.isis.vanderbilt.edu
+    location: Nashville, TN
+    period: "Aug 2019 – May 2022"
+    points:
+      - >-
+        Core contributor to DeepForge (700+ GitHub stars), an NSF-funded visual
+        environment for deep learning pipelines. Led its Keras parser
+        modernization and Svelte web components.
+      - >-
+        First author of a DeepForge study reproducing CNN-based photometric
+        redshift estimation on SDSS galaxy images, later turned into tutorials
+        in the official docs.
+      - >-
+        Led development of GMSO, the core topology library of the NSF-funded
+        MoSDeF ecosystem. Created forcefield-utilities and set up CI, Docker
+        publishing and release tooling across MoSDeF libraries.
+      - >-
+        Built Symbench Circuit Maker for DARPA's Symbiotic Design for CPS
+        program, a web-based circuit design studio that uses deep learning to
+        predict the next likely component. Also built a Python client for
+        scripted UAV design evaluation and Fusepack, a genetic-algorithm
+        component placement tool for UAV fuselages.
 
   - title: Graduate Research Assistant
-    org: Southern Illinois University Carbondale
+    org: College of Applied Sciences and Arts, Southern Illinois University
     url: https://siu.edu
     location: Carbondale, IL
-    period: "" # e.g. "2017 – 2019"
+    period: "Jan 2018 – May 2019"
     points:
-      - Natural language processing research with Dr. Andy Wang.
-      - Database research on a novel multi-join algorithm with Prof. Wen-Chi Hou.
+      - >-
+        Built a data insights dashboard for the aviation department and
+        published on incentivized IoT service sharing with OSGi and Hashgraph.
 
 education:
+  - degree: M.S., Data Science (part-time)
+    org: Vanderbilt University
+    url: https://www.vanderbilt.edu
+    period: "Aug 2025 – Present"
   - degree: M.S., Computer Science
     org: Southern Illinois University Carbondale
     url: https://siu.edu
-    period: "2019"
+    period: "May 2019"
   - degree: B.E., Electronics and Communication Engineering
     org: Institute of Engineering, Thapathali Campus, Tribhuvan University
     url: https://www.tcioe.edu.np/
-    period: ""
+    period: "Mar 2015"
+
+skills:
+  - { area: Languages, items: "Python, TypeScript, JavaScript, Rust, SQL, Java, Bash" }
+  - { area: Front end, items: "SvelteKit, Svelte, Next.js, React, Tailwind CSS, XState, WebSockets, WebRTC (LiveKit)" }
+  - { area: Back end & data, items: "FastAPI, Actix Web, Node.js, PostgreSQL, MongoDB, RabbitMQ, ZeroMQ, S3/MinIO" }
+  - { area: GenAI & ML, items: "LLM integration (Claude, GPT), prompt and context engineering, Amazon Bedrock, on-device LLMs (NVIDIA Jetson), PyTorch, TensorFlow/Keras, NVIDIA Riva, speech-to-text, computer vision, surrogate modeling" }
+  - { area: Cloud & DevOps, items: "AWS (ECS, CloudFormation, CloudWatch, S3, Transcribe), Docker, GitHub Actions, Linux, Google Cloud" }
+  - { area: Learning analytics, items: "xAPI, randomized controlled trial infrastructure, multimodal learning analytics, IRB-compliant data handling" }

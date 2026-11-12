@@ -50,15 +50,16 @@
 {{- end }}
 
 {{- $pubs := partial "publications-list.html" . }}
-{{- with $pubs }}
+{{- $selected := where $pubs "selected" true }}
+{{- with $selected | default $pubs }}
 <section class="section">
   <div class="container narrow">
     <div class="section-head">
-      <h2 class="section-title">Recent publications</h2>
+      <h2 class="section-title">Selected publications</h2>
       <a class="link-arrow" href="/publications/">All publications{{ partial "icon.html" "arrow-right" }}</a>
     </div>
     <div class="pub-list">
-      {{- range first 3 . }}{{ partial "publication.html" . }}{{ end }}
+      {{- range first 4 . }}{{ partial "publication.html" . }}{{ end }}
     </div>
   </div>
 </section>

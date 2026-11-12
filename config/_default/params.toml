@@ -1,6 +1,6 @@
 # Site
 title = "Umesh Timalsina"
-description = "Umesh Timalsina is a research engineer at the Institute for Software Integrated Systems, Vanderbilt University, building systems for multimodal learning analytics."
+description = "Umesh Timalsina is a research software engineer at Vanderbilt University building AI-tutoring and real-time multimodal learning analytics platforms."
 images = ["cover.png"]
 mainSections = ["blog"]
 
@@ -8,24 +8,27 @@ mainSections = ["blog"]
 # Leave a field empty ("") to hide it.
 [profile]
   name = "Umesh Timalsina"
-  role = "Research Engineer"
-  affiliation = "Institute for Software Integrated Systems, Vanderbilt University"
-  affiliationShort = "ISIS · Vanderbilt University"
+  role = "Lead System Engineer"
+  affiliation = "ICONS (formerly the Institute for Software Integrated Systems), Vanderbilt University"
+  affiliationShort = "Vanderbilt University"
   affiliationUrl = "https://www.isis.vanderbilt.edu"
   location = "Nashville, TN"
-  tagline = "I design and build software for multimodal learning analytics: real-time systems that collect, synchronize and process audio, video and interaction data from classrooms at scale."
+  tagline = "I build research software for learning: an LLM-powered tutoring platform in an OECD randomized controlled trial across European schools, and real-time multimodal analytics systems used in U.S. classroom studies."
   headshot = "" # e.g. "images/headshot.jpg" (in assets/); a monogram is shown when empty
   email = "umesh.timalsina26@gmail.com"
   github = "https://github.com/umesh-timalsina"
   linkedin = "https://www.linkedin.com/in/umesh-timalsina-812a4a103/"
-  scholar = "" # TODO: Google Scholar profile URL
+  scholar = "https://scholar.google.com/citations?user=ePApBaMAAAAJ"
   orcid = ""   # TODO: ORCID URL
   cv = "/cv.pdf" # place the PDF at static/cv.pdf
+  nameVariants = ["Umesh Timalsina", "U. Timalsina"] # bolded in author lists
   interests = [
+    "AI in education & LLM tutoring",
     "Multimodal learning analytics",
-    "Real-time media & data pipelines",
-    "Distributed systems",
+    "Real-time streaming systems",
     "Research software engineering",
+    "Deep learning for engineering design",
+    "Cyber-physical systems",
   ]
 
 # Debug
@@ -66,7 +69,7 @@ mainSections = ["blog"]
     type = "Person"
     logo = "favicon-512x512.png"
     name = "Umesh Timalsina"
-    sameAs = ["https://github.com/umesh-timalsina", "https://www.linkedin.com/in/umesh-timalsina-812a4a103/"]
+    sameAs = ["https://github.com/umesh-timalsina", "https://www.linkedin.com/in/umesh-timalsina-812a4a103/", "https://scholar.google.com/citations?user=ePApBaMAAAAJ"]
     images = ["cover.png"]
     article = []
     newsArticle = []
