@@ -1,0 +1,43 @@
+{{ define "main" }}
+<article class="article">
+  <header class="page-header">
+    <div class="container band-grid">
+      <p class="article-back"><a href="/blog/">Writing</a></p>
+      <div class="band-body">
+        <h1 class="page-title article-title">{{ .Title }}</h1>
+        {{- with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+        <p class="post-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>, {{ .ReadingTime }} min read
+          {{- with .GetTerms "tags" }}. Filed under {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ lower $t.LinkTitle }}</a>{{ end }}{{ end }}
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container band-grid article-grid section-tight">
+    {{- if .Params.toc }}
+    <aside class="toc" aria-label="On this page">
+      <details open>
+        <summary>On this page</summary>
+        {{ .TableOfContents }}
+      </details>
+    </aside>
+    {{- else }}
+    <div></div>
+    {{- end }}
+    <div class="band-body prose article-body">
+      {{ .Content }}
+    </div>
+  </div>
+
+  {{- if or .PrevInSection .NextInSection }}
+  <footer class="container band-grid article-footer">
+    <div></div>
+    <nav class="band-body post-nav" aria-label="More writing">
+      {{- with .PrevInSection }}<p>Newer: <a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}
+      {{- with .NextInSection }}<p>Older: <a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}
+    </nav>
+  </footer>
+  {{- end }}
+</article>
+{{ end }}

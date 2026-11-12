@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "en" }}">
+  <head>
+    {{- partial "head.html" . }}
+  </head>
+  <body class="page-{{ .Kind }}{{ with .Section }} section-{{ . }}{{ end }}">
+    <a class="skip-link" href="#main">Skip to content</a>
+    {{- partial "header.html" . }}
+    <main id="main" tabindex="-1">
+      {{- block "main" . }}{{ end }}
+    </main>
+    {{- partial "footer.html" . }}
+    {{- $js := resources.Get "js/main.js" | js.Build (dict "minify" hugo.IsProduction "target" "es2018") }}
+    {{- if hugo.IsProduction }}{{ $js = $js | fingerprint }}{{ end }}
+    <script src="{{ $js.RelPermalink }}" defer{{ if hugo.IsProduction }} integrity="{{ $js.Data.Integrity }}"{{ end }}></script>
+  </body>
+</html>

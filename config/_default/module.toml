@@ -1,16 +1,12 @@
-# mounts
-## archetypes
-[[mounts]]
-  source = "node_modules/@hyas/doks-core/archetypes"
-  target = "archetypes"
-
-[[mounts]]
-  source = "archetypes"
-  target = "archetypes"
+# Mounts
+# The site's presentation lives in this repo (layouts/, assets/). Only small,
+# focused Hyas modules are mounted: images (img/figure shortcodes and the
+# markdown image render hook), SEO (meta, OpenGraph, JSON-LD, sitemap, robots)
+# and inline SVG icons (Tabler).
 
 ## assets
 [[mounts]]
-  source = "node_modules/@hyas/core/assets"
+  source = "assets"
   target = "assets"
 
 [[mounts]]
@@ -18,16 +14,8 @@
   target = "assets"
 
 [[mounts]]
-  source = "node_modules/@hyas/doks-core/assets"
-  target = "assets"
-
-[[mounts]]
   source = "node_modules/@tabler/icons/icons"
   target = "assets/svgs/tabler-icons"
-
-[[mounts]]
-  source = "assets"
-  target = "assets"
 
 ## content
 [[mounts]]
@@ -36,25 +24,12 @@
 
 ## data
 [[mounts]]
-  source = "node_modules/@hyas/doks-core/data"
-  target = "data"
-
-[[mounts]]
   source = "data"
   target = "data"
 
-## i18n
+## layouts (first match wins: local overrides come first)
 [[mounts]]
-  source = "node_modules/@hyas/doks-core/i18n"
-  target = "i18n"
-
-[[mounts]]
-  source = "i18n"
-  target = "i18n"
-
-## layouts
-[[mounts]]
-  source = "node_modules/@hyas/core/layouts"
+  source = "layouts"
   target = "layouts"
 
 [[mounts]]
@@ -66,22 +41,10 @@
   target = "layouts"
 
 [[mounts]]
-  source = "node_modules/@hyas/doks-core/layouts"
-  target = "layouts"
-
-[[mounts]]
   source = "node_modules/@hyas/inline-svg/layouts"
   target = "layouts"
 
-[[mounts]]
-  source = "layouts"
-  target = "layouts"
-
 ## static
-[[mounts]]
-  source = "node_modules/@hyas/doks-core/static"
-  target = "static"
-
 [[mounts]]
   source = "static"
   target = "static"

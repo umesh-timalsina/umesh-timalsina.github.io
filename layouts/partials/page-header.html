@@ -1,0 +1,11 @@
+{{- /* Context: page. Page title and optional lead, aligned to the content column. */ -}}
+<header class="page-header">
+  <div class="container band-grid">
+    <div class="band-body">
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{- with .Params.lead | default .Description }}
+      <p class="lead">{{ . | markdownify }}</p>
+      {{- end }}
+    </div>
+  </div>
+</header>

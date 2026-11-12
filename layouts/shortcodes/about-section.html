@@ -1,0 +1,14 @@
+{{- /*
+  A titled section on the shared grid: title in the label column, text in the
+  reading column. Usage:
+    {{< about-section title="Background" >}} Markdown… {{< /about-section >}}
+  layout="columns" sets each paragraph side by side on wide screens.
+*/ -}}
+{{- $title := .Get "title" }}
+{{- $columns := eq (.Get "layout") "columns" }}
+<section class="band-grid about-section"{{ with $title }} id="{{ anchorize . }}"{{ end }}>
+  {{- with $title }}<h2 class="group-label">{{ . }}</h2>{{ end }}
+  <div class="band-body prose{{ if $columns }} about-columns{{ end }}">
+    {{ .Inner | .Page.RenderString (dict "display" "block") }}
+  </div>
+</section>

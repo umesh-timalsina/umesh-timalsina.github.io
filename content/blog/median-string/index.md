@@ -5,6 +5,7 @@ summary: "Solving Median String Problem in DNA using MapReduce"
 date: 2019-03-25T16:27:22+02:00
 lastmod: 2024-04-25T16:27:22+02:00
 draft: false
+toc: true
 weight: 50
 categories: []
 tags: ["tech"]
@@ -15,7 +16,7 @@ seo:
   title: "" # custom title (optional)
   description: "" # custom description (recommended)
   canonical: "" # custom canonical URL (optional)
-  noindex: true # false (default) or true
+  noindex: false
 ---
 
 {{< img process="fill 2100x900" lqip="21x webp q20" loading="eager" fetchpriority="high" src="images/dna.jpg" alt="DNA" >}}

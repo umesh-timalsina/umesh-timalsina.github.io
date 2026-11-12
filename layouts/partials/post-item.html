@@ -1,0 +1,6 @@
+{{- /* Context: a blog page */ -}}
+<article class="post-item">
+  <h3 class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{- with .Description | default .Params.summary }}<p class="post-summary">{{ . }}</p>{{ end }}
+  <p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>, {{ .ReadingTime }} min read</p>
+</article>

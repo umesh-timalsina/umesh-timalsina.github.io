@@ -1,0 +1,67 @@
+{{ define "main" }}
+{{- $p := site.Params.profile }}
+{{- $cv := hugo.Data.experience }}
+<header class="page-header">
+  <div class="container band-grid">
+    <div class="band-body">
+      <h1 class="page-title">{{ .Title }}</h1>
+      <p class="lead">{{ $p.role }}, {{ $p.affiliation }}</p>
+      {{- with $p.cv }}{{ if fileExists (printf "static%s" .) }}
+      <p><a class="btn btn-primary" href="{{ . }}" download>Download PDF</a></p>
+      {{- end }}{{ end }}
+    </div>
+  </div>
+</header>
+
+<div class="container section-tight">
+  {{- with $cv.experience }}
+  <section class="cv-section">
+    <div class="band-grid"><h2 class="cv-heading band-body">Experience</h2></div>
+    {{- range . }}
+    <article class="band-grid cv-entry">
+      <p class="cv-when">{{ .period }}</p>
+      <div class="band-body">
+        <h3 class="cv-title">{{ .title }}</h3>
+        <p class="cv-org">{{ with .url }}<a href="{{ . }}" rel="noopener">{{ end }}{{ .org }}{{ with .url }}</a>{{ end }}{{ with .location }}, {{ . }}{{ end }}</p>
+        {{- with .points }}<ul class="cv-points">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      </div>
+    </article>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  {{- with $cv.education }}
+  <section class="cv-section">
+    <div class="band-grid"><h2 class="cv-heading band-body">Education</h2></div>
+    {{- range . }}
+    <article class="band-grid cv-entry">
+      <p class="cv-when">{{ .period }}</p>
+      <div class="band-body">
+        <h3 class="cv-title">{{ .degree }}</h3>
+        <p class="cv-org">{{ with .url }}<a href="{{ . }}" rel="noopener">{{ end }}{{ .org }}{{ with .url }}</a>{{ end }}</p>
+      </div>
+    </article>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  {{- with $cv.skills }}
+  <section class="cv-section">
+    <div class="band-grid"><h2 class="cv-heading band-body">Technical skills</h2></div>
+    {{- range . }}
+    <div class="band-grid cv-entry">
+      <p class="cv-when">{{ .area }}</p>
+      <p class="band-body cv-skill">{{ .items }}</p>
+    </div>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  <section class="cv-section">
+    <div class="band-grid"><h2 class="cv-heading band-body">Projects and publications</h2></div>
+    <div class="band-grid">
+      <p class="band-body">{{ len hugo.Data.projects }} <a href="/projects/">projects</a> and {{ len (partial "publications-list.html" .) }} <a href="/publications/">papers and preprints</a>.</p>
+    </div>
+  </section>
+</div>
+{{ end }}

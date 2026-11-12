@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ partial "page-header.html" . }}
+<div class="container section-tight band-grid">
+  <div class="band-body">
+  {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  {{- if eq .Kind "taxonomy" }}
+  <ul class="plain-list">
+    {{- range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="muted">({{ len .Pages }})</span></li>{{ end }}
+  </ul>
+  {{- else }}
+  <div class="post-list">
+    {{- range .Pages.ByDate.Reverse }}{{ partial "post-item.html" . }}{{ end }}
+  </div>
+  {{- end }}
+  </div>
+</div>
+{{ end }}

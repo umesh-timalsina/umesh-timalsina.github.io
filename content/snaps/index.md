@@ -1,41 +1,23 @@
 ---
-title: "A collection of random pictures I took"
-description: ""
-summary: ""
+title: "Snaps"
+description: "A small collection of photographs I've taken."
+lead: "A small collection of photographs I've taken."
 date: 2023-09-07T16:21:44+02:00
-lastmod: 2023-09-07T16:21:44+02:00
+lastmod: 2024-04-25T16:21:44+02:00
 draft: false
-weight: 50
-categories: []
-tags: []
-contributors: []
-pinned: false
-homepage: false
 seo:
-  title: "" # custom title (optional)
-  description: "" # custom description (recommended)
-  canonical: "" # custom canonical URL (optional)
-  noindex: true # false (default) or true
+  title: ""
+  description: ""
+  canonical: ""
+  noindex: true
 ---
 
-![The courthouse](images/snaps/court-house.jpeg)
-<center style="font-style: italic">The Courthouse. A snap of Monroe County Courthouse taken from the B-Line trial, Bloomington, IN [April 2024]</center>
+{{< figure src="images/snaps/court-house.jpeg" alt="Monroe County Courthouse seen from the B-Line Trail" caption="The Courthouse — Monroe County Courthouse from the B-Line Trail, Bloomington, IN · April 2024" >}}
 
-<br/>
+{{< figure src="images/snaps/two-birds.jpeg" alt="Two birds" caption="Two Birds — Nashville, TN · April 2024" >}}
 
-![Two Birds](images/snaps/two-birds.jpeg)
-<center style="font-style: italic">Two Birds. Nashville, TN [April 2024]</center>
+{{< figure src="images/snaps/the-sun.jpeg" alt="The sun" caption="The Sun — Nashville, TN · April 2024" >}}
 
-<br/>
+{{< figure src="images/snaps/the-clouds.jpeg" alt="Clouds" caption="The Clouds — Nashville, TN · April 2024" >}}
 
-![The Sun](images/snaps/the-sun.jpeg)
-<center style="font-style: italic">The Sun. Nashville, TN [April 2024]</center>
-
-
-<br/>
-
-![The Clouds](images/snaps/the-clouds.jpeg)
-<center style="font-style: italic">The Clouds. Nashville, TN [April 2024]</center>
-
-
-
+{{< figure src="images/umesh.png" alt="Umesh Timalsina (right) with Diwakar Jha" caption="With Diwakar Jha (I am on the right)" >}}

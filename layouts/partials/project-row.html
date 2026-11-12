@@ -1,0 +1,18 @@
+{{- /* Context: dict "p" (entry from data/projects.yaml), "compact" (bool: hide tags/links). */ -}}
+{{- $p := .p }}
+<article class="row track-{{ $p.track | default "infra" }}" id="{{ anchorize $p.title }}">
+  <p class="row-when">{{ $p.years }}</p>
+  <div class="row-main">
+    <h3 class="row-title">{{ $p.title }}</h3>
+    {{- with $p.role }}<p class="row-role">{{ replace . "&" "and" }}</p>{{ end }}
+    <p class="row-text">{{ $p.summary }}</p>
+    {{- if not $.compact }}
+      {{- with $p.tags }}<p class="row-tech">{{ delimit . ", " }}</p>{{ end }}
+      {{- with $p.links }}
+      <p class="row-links">
+        {{- range . }}<a href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>{{ .label }}</a>{{ end -}}
+      </p>
+      {{- end }}
+    {{- end }}
+  </div>
+</article>

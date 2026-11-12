@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{ partial "page-header.html" . }}
+<div class="container section-tight">
+  {{- range .Pages.ByDate.Reverse.GroupByDate "2006" }}
+  <section class="band-grid group">
+    <h2 class="group-label">{{ .Key }}</h2>
+    <div class="band-body post-list">
+      {{- range .Pages }}{{ partial "post-item.html" . }}{{ end }}
+    </div>
+  </section>
+  {{- end }}
+</div>
+{{ end }}

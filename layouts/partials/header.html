@@ -1,0 +1,23 @@
+{{- $current := . }}
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="{{ site.Home.RelPermalink }}">{{ site.Params.profile.name }}</a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <ul>
+        {{- range site.Menus.main }}
+          <li><a href="{{ .URL }}"{{ if hasPrefix $current.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch between light and dark theme">
+        <span class="icon-sun">{{ partial "icon.html" "sun" }}</span>
+        <span class="icon-moon">{{ partial "icon.html" "moon" }}</span>
+      </button>
+      <button class="icon-btn nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="icon-open">{{ partial "icon.html" "menu-2" }}</span>
+        <span class="icon-close">{{ partial "icon.html" "x" }}</span>
+      </button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,165 @@
+# Publications shown on /publications/ (grouped by year, newest first).
+# Source: Google Scholar profile + resume (first pass, Nov 2026).
+#
+# Fields:
+#   title:    Paper title
+#   authors:  [list of names]. Names in params.profile.nameVariants are bolded.
+#             "et al." marks author lists that Scholar truncates. Fill in if wanted.
+#   venue:    Conference / journal / workshop
+#   year:     2024
+#   type:     journal | conference | workshop | preprint | abstract
+#   selected: true. Shown under "Selected publications" on the homepage.
+#   featured: true. Listed under "Featured publications" at the top of /publications/.
+#   links:    [{label: PDF|arXiv|DOI|Code, url: ...}]
+#   note:     optional, e.g. "Best Paper Award"
+#
+# Deliberately left out: Zenodo software releases (GMSO, forcefield-utilities,
+# OpenFF Interchange), AIChE meeting abstracts (2021, 2022), a duplicate Scholar
+# entry, and the 2015 "Metasploit framework with Kali Linux" technical report.
+
+# ---------------------------------------------------------------- 2026
+- title: "Evidence-Decision-Feedback: Theory-Driven Adaptive Scaffolding for LLM Agents"
+  authors: ["C. Cohn", "S. Guo", "S. Rayala", "H. D. Wang", "N. Mohammed", "U. Timalsina", "S. Jain", "et al."]
+  venue: "International Conference on Artificial Intelligence in Education (AIED)"
+  year: 2026
+  type: conference
+
+- title: "A Theory-Guided LLM Pedagogical Agent for STEM+C Scaffolding Without Over-Reliance"
+  authors: ["C. Cohn", "S. Rayala", "S. Guo", "H. D. Wang", "N. Mohammed", "U. Timalsina", "S. Jain", "et al."]
+  venue: "arXiv preprint arXiv:2605.30539"
+  year: 2026
+  type: preprint
+  links:
+    - { label: arXiv, url: "https://arxiv.org/abs/2605.30539" }
+
+- title: "The Role of LLM-Powered Conversational Agents in Supporting Inquiry in a Narrative-Centered Learning Environment: A Learning Analytics Study"
+  authors: ["N. Srivastava", "M. Humburg", "S. Burriss", "S. Jain", "C. Cohn", "Y. Kim", "U. Timalsina", "et al."]
+  venue: "Proceedings of the 16th International Learning Analytics and Knowledge Conference (LAK26)"
+  year: 2026
+  type: conference
+
+- title: "“He’s gonna say it’s trash”: Students’ Emotional Experiences with AI Feedback in Collaborative Scientific Inquiry"
+  authors: ["M. Humburg", "N. Srivastava", "S. Burriss", "Y. J. Kim", "J. Danish", "C. E. Hmelo-Silver", "et al."]
+  venue: "Proceedings of the 19th International Conference on Computer-Supported Collaborative Learning (CSCL)"
+  year: 2026
+  type: conference
+
+- title: "Collaboration Quality in Computational Modeling: Implications for Middle-School STEM+C Learning"
+  authors: ["S. Jain", "N. Srivastava", "S. M. Prasanna", "C. Cohn", "U. Timalsina", "N. Mohammed", "et al."]
+  venue: "Proceedings of the 19th International Conference on Computer-Supported Collaborative Learning (CSCL)"
+  year: 2026
+  type: conference
+
+- title: "Feeling Like a Scientist, Engineer, and Computer Scientist: Exploring Students’ Disciplinary Identity in an Integrated STEM+C Curriculum"
+  authors: ["N. Srivastava", "G. Anton", "S. Jain", "C. Cohn", "U. Timalsina", "N. Mohammed", "et al."]
+  venue: "Proceedings of the 20th International Conference of the Learning Sciences (ICLS)"
+  year: 2026
+  type: conference
+
+# ---------------------------------------------------------------- 2025
+- title: "SyncFlow: A Scalable Platform for Multimodal Learning Analytics"
+  authors: ["U. Timalsina", "E. Davalos", "N. P. Sanda", "Y. Zhang", "J. H. Fonteles", "T. S. Ashwin", "et al."]
+  venue: "US Research Software Engineer Conference (US-RSE)"
+  year: 2025
+  type: conference
+  featured: true
+  selected: true
+  links:
+    - { label: Code, url: "https://github.com/oele-isis-vanderbilt/SyncFlow" }
+
+- title: "Data-Efficient Surrogate Modeling for Engineering Design: Ensemble-Free Batch-Mode Deep Active Learning for Regression"
+  authors: ["S. Kapoor", "H. Vardhan", "U. Timalsina", "S. Kumar", "P. Volgyesi", "J. Sztipanovits"]
+  venue: "6th International Conference on Computers and Artificial Intelligence Technology" # TODO: verify full venue name
+  year: 2025
+  type: conference
+
+- title: "Challenges of Applying Computer Vision for Emotion Detection in Educational Settings: A Study on Bias"
+  authors: ["T. S. Ashwin", "N. Sanda", "U. Timalsina", "G. Biswas"]
+  venue: "International Conference on Artificial Intelligence in Education (AIED), pp. 388–395"
+  year: 2025
+  type: conference
+
+- title: "Personalizing Student-Agent Interactions Using Log-Contextualized Retrieval-Augmented Generation (RAG)"
+  authors: ["C. Cohn", "S. Rayala", "C. Snyder", "J. Fonteles", "S. Jain", "N. Mohammed", "et al."]
+  venue: "arXiv preprint arXiv:2505.17238"
+  year: 2025
+  type: preprint
+  links:
+    - { label: arXiv, url: "https://arxiv.org/abs/2505.17238" }
+
+- title: "LearnLens: An AI-Enhanced Dashboard to Support Teachers in Open-Ended Classrooms"
+  authors: ["N. Srivastava", "S. Jain", "C. Cohn", "N. Mohammed", "U. Timalsina", "G. Biswas"]
+  venue: "arXiv preprint arXiv:2509.10582"
+  year: 2025
+  type: preprint
+  links:
+    - { label: arXiv, url: "https://arxiv.org/abs/2509.10582" }
+
+- title: "Centering Youth Perspectives in Agent Design: Piloting an Activity to Scaffold Discussions on Ethics and Agents"
+  authors: ["N. Srivastava", "S. Burriss", "N. Mohammed", "U. Timalsina", "M. Deweese", "et al."]
+  venue: "International Conference on Computers in Education (ICCE)"
+  year: 2025
+  type: conference
+
+# ---------------------------------------------------------------- 2024
+- title: "Sample-Efficient and Surrogate-Based Design Optimization of Underwater Vehicle Hulls"
+  authors: ["H. Vardhan", "D. Hyde", "U. Timalsina", "P. Volgyesi", "J. Sztipanovits"]
+  venue: "Ocean Engineering 311, 118777"
+  year: 2024
+  type: journal
+
+- title: "Anvil: An Integration of Artificial Intelligence, Sampling Techniques, and a Combined CAD-CFD Tool"
+  authors: ["H. Vardhan", "U. Timalsina", "M. Sandborn", "D. Hyde", "P. Volgyesi", "J. Sztipanovits"]
+  venue: "IEEE Workshop on Design Automation for CPS and IoT (DESTION), pp. 16–21"
+  year: 2024
+  type: workshop
+  featured: true
+
+- title: "3D Gaze Tracking for Studying Collaborative Interactions in Mixed-Reality Environments"
+  authors: ["E. Davalos", "Y. Zhang", "T. S. Ashwin", "J. H. Fonteles", "U. Timalsina", "G. Biswas"]
+  venue: "Companion Proceedings of the 26th International Conference on Multimodal Interaction (ICMI)"
+  year: 2024
+  type: conference
+
+# ---------------------------------------------------------------- 2023
+- title: "ChimeraPy: A Scientific Distributed Streaming Framework for Real-time Multimodal Data Retrieval and Processing"
+  authors: ["E. Davalos", "U. Timalsina", "Y. Zhang", "J. Wu", "J. H. Fonteles", "G. Biswas"]
+  venue: "IEEE International Conference on Big Data (BigData), pp. 201–206"
+  year: 2023
+  type: conference
+  featured: true
+  selected: true
+  links:
+    - { label: Code, url: "https://github.com/ChimeraPy" }
+
+- title: "MoSDeF-GOMC: Python Software for the Creation of Scientific Workflows for the Monte Carlo Simulation Engine GOMC"
+  authors: ["B. Crawford", "U. Timalsina", "C. D. Quach", "N. C. Craven", "J. B. Gilmer", "C. McCabe", "et al."]
+  venue: "Journal of Chemical Information and Modeling 63(4), 1218–1228"
+  year: 2023
+  type: journal
+
+# ---------------------------------------------------------------- 2022
+- title: "DeepForge for Astronomy: Deep Learning SDSS Redshifts from Images"
+  authors: ["U. Timalsina", "B. Broll", "K. Moore", "T. Budavári", "Á. Lédeczi"]
+  venue: "Astronomy and Computing 40, 100601"
+  year: 2022
+  type: journal
+  featured: true
+  selected: true
+
+# ---------------------------------------------------------------- 2020
+- title: "A Machine Learning Gateway for Scientific Workflow Design"
+  authors: ["B. Broll", "U. Timalsina", "P. Völgyesi", "T. Budavári", "Á. Lédeczi"]
+  venue: "Scientific Programming 2020, 8867380"
+  year: 2020
+  type: journal
+  featured: true
+  selected: true
+
+# ---------------------------------------------------------------- 2019
+- title: "Incentivizing Services Sharing in IoT with OSGi and HashGraph"
+  authors: ["U. Timalsina", "A. Wang"]
+  venue: "2nd International Conference on Data Intelligence and Security (ICDIS)"
+  year: 2019
+  type: conference
+  featured: true
