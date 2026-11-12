@@ -10,7 +10,7 @@
 #   type:     journal | conference | workshop | preprint | abstract
 #   selected: true. Shown under "Selected publications" on the homepage.
 #   featured: true. Listed under "Featured publications" at the top of /publications/.
-#   links:    [{label: PDF|arXiv|DOI|Code, url: ...}]
+#   links:    [{label: Paper|arXiv|Code, url: ...}]. "Paper" is the DOI link to the publisher page.
 #   note:     optional, e.g. "Best Paper Award"
 #
 # Deliberately left out: Zenodo software releases (GMSO, forcefield-utilities,
@@ -23,6 +23,9 @@
   venue: "International Conference on Artificial Intelligence in Education (AIED)"
   year: 2026
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.1007/978-3-032-29744-0_1" }
+    - { label: arXiv, url: "https://arxiv.org/abs/2602.01415" }
 
 - title: "A Theory-Guided LLM Pedagogical Agent for STEM+C Scaffolding Without Over-Reliance"
   authors: ["C. Cohn", "S. Rayala", "S. Guo", "H. D. Wang", "N. Mohammed", "U. Timalsina", "S. Jain", "et al."]
@@ -37,24 +40,32 @@
   venue: "Proceedings of the 16th International Learning Analytics and Knowledge Conference (LAK26)"
   year: 2026
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.1145/3785022.3785103" }
 
 - title: "“He’s gonna say it’s trash”: Students’ Emotional Experiences with AI Feedback in Collaborative Scientific Inquiry"
   authors: ["M. Humburg", "N. Srivastava", "S. Burriss", "Y. J. Kim", "J. Danish", "C. E. Hmelo-Silver", "et al."]
   venue: "Proceedings of the 19th International Conference on Computer-Supported Collaborative Learning (CSCL)"
   year: 2026
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.22318/cscl2026.609420" }
 
 - title: "Collaboration Quality in Computational Modeling: Implications for Middle-School STEM+C Learning"
   authors: ["S. Jain", "N. Srivastava", "S. M. Prasanna", "C. Cohn", "U. Timalsina", "N. Mohammed", "et al."]
   venue: "Proceedings of the 19th International Conference on Computer-Supported Collaborative Learning (CSCL)"
   year: 2026
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.22318/cscl2026.725142" }
 
 - title: "Feeling Like a Scientist, Engineer, and Computer Scientist: Exploring Students’ Disciplinary Identity in an Integrated STEM+C Curriculum"
   authors: ["N. Srivastava", "G. Anton", "S. Jain", "C. Cohn", "U. Timalsina", "N. Mohammed", "et al."]
   venue: "Proceedings of the 20th International Conference of the Learning Sciences (ICLS)"
   year: 2026
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.22318/icls2026.952928" }
 
 # ---------------------------------------------------------------- 2025
 - title: "SyncFlow: A Scalable Platform for Multimodal Learning Analytics"
@@ -65,19 +76,25 @@
   featured: true
   selected: true
   links:
+    - { label: Paper, url: "https://doi.org/10.5281/zenodo.17254182" }
     - { label: Code, url: "https://github.com/oele-isis-vanderbilt/SyncFlow" }
 
 - title: "Data-Efficient Surrogate Modeling for Engineering Design: Ensemble-Free Batch-Mode Deep Active Learning for Regression"
   authors: ["S. Kapoor", "H. Vardhan", "U. Timalsina", "S. Kumar", "P. Volgyesi", "J. Sztipanovits"]
-  venue: "6th International Conference on Computers and Artificial Intelligence Technology" # TODO: verify full venue name
+  venue: "6th International Conference on Computers and Artificial Intelligence Technology (CAIT)"
   year: 2025
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.1109/cait68620.2025.11424920" }
+    - { label: arXiv, url: "https://arxiv.org/abs/2211.10360" }
 
 - title: "Challenges of Applying Computer Vision for Emotion Detection in Educational Settings: A Study on Bias"
   authors: ["T. S. Ashwin", "N. Sanda", "U. Timalsina", "G. Biswas"]
   venue: "International Conference on Artificial Intelligence in Education (AIED), pp. 388–395"
   year: 2025
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.1007/978-3-031-98465-5_49" }
 
 - title: "Personalizing Student-Agent Interactions Using Log-Contextualized Retrieval-Augmented Generation (RAG)"
   authors: ["C. Cohn", "S. Rayala", "C. Snyder", "J. Fonteles", "S. Jain", "N. Mohammed", "et al."]
@@ -100,6 +117,8 @@
   venue: "International Conference on Computers in Education (ICCE)"
   year: 2025
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.58459/icce.2025.6053" }
 
 # ---------------------------------------------------------------- 2024
 - title: "Sample-Efficient and Surrogate-Based Design Optimization of Underwater Vehicle Hulls"
@@ -107,6 +126,9 @@
   venue: "Ocean Engineering 311, 118777"
   year: 2024
   type: journal
+  links:
+    - { label: Paper, url: "https://doi.org/10.1016/j.oceaneng.2024.118777" }
+    - { label: arXiv, url: "https://arxiv.org/abs/2304.12420" }
 
 - title: "Anvil: An Integration of Artificial Intelligence, Sampling Techniques, and a Combined CAD-CFD Tool"
   authors: ["H. Vardhan", "U. Timalsina", "M. Sandborn", "D. Hyde", "P. Volgyesi", "J. Sztipanovits"]
@@ -114,12 +136,18 @@
   year: 2024
   type: workshop
   featured: true
+  links:
+    - { label: Paper, url: "https://doi.org/10.1109/destion62938.2024.00009" }
+    - { label: arXiv, url: "https://arxiv.org/abs/2407.02519" }
 
 - title: "3D Gaze Tracking for Studying Collaborative Interactions in Mixed-Reality Environments"
   authors: ["E. Davalos", "Y. Zhang", "T. S. Ashwin", "J. H. Fonteles", "U. Timalsina", "G. Biswas"]
   venue: "Companion Proceedings of the 26th International Conference on Multimodal Interaction (ICMI)"
   year: 2024
   type: conference
+  links:
+    - { label: Paper, url: "https://doi.org/10.1145/3686215.3688380" }
+    - { label: arXiv, url: "https://arxiv.org/abs/2406.11003" }
 
 # ---------------------------------------------------------------- 2023
 - title: "ChimeraPy: A Scientific Distributed Streaming Framework for Real-time Multimodal Data Retrieval and Processing"
@@ -130,6 +158,7 @@
   featured: true
   selected: true
   links:
+    - { label: Paper, url: "https://doi.org/10.1109/bigdata59044.2023.10386382" }
     - { label: Code, url: "https://github.com/ChimeraPy" }
 
 - title: "MoSDeF-GOMC: Python Software for the Creation of Scientific Workflows for the Monte Carlo Simulation Engine GOMC"
@@ -137,6 +166,8 @@
   venue: "Journal of Chemical Information and Modeling 63(4), 1218–1228"
   year: 2023
   type: journal
+  links:
+    - { label: Paper, url: "https://doi.org/10.1021/acs.jcim.2c01498" }
 
 # ---------------------------------------------------------------- 2022
 - title: "DeepForge for Astronomy: Deep Learning SDSS Redshifts from Images"
@@ -146,6 +177,8 @@
   type: journal
   featured: true
   selected: true
+  links:
+    - { label: Paper, url: "https://doi.org/10.1016/j.ascom.2022.100601" }
 
 # ---------------------------------------------------------------- 2020
 - title: "A Machine Learning Gateway for Scientific Workflow Design"
@@ -155,6 +188,8 @@
   type: journal
   featured: true
   selected: true
+  links:
+    - { label: Paper, url: "https://doi.org/10.1155/2020/8867380" }
 
 # ---------------------------------------------------------------- 2019
 - title: "Incentivizing Services Sharing in IoT with OSGi and HashGraph"
@@ -163,3 +198,5 @@
   year: 2019
   type: conference
   featured: true
+  links:
+    - { label: Paper, url: "https://doi.org/10.1109/icdis.2019.00015" }
