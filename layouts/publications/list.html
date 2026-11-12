@@ -4,13 +4,30 @@
   {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
   {{- $pubs := partial "publications-list.html" . }}
   {{- with $pubs }}
+    {{- /* Split into first-author papers and the rest (by year). */}}
+    {{- $me := site.Params.profile.nameVariants | default (slice site.Params.profile.name) }}
+    {{- $first := slice }}
+    {{- $others := slice }}
+    {{- range . }}
+      {{- if in $me (index .authors 0) }}{{ $first = $first | append . }}{{ else }}{{ $others = $others | append . }}{{ end }}
+    {{- end }}
+
+    {{- with $first }}
+    <section class="year-group">
+      <h2 class="year-heading">First author</h2>
+      <div class="pub-list">
+        {{- range . }}{{ partial "publication.html" . }}{{ end }}
+      </div>
+    </section>
+    {{- end }}
+
     {{- $years := slice }}
-    {{- range . }}{{ $years = $years | append .year }}{{ end }}
+    {{- range $others }}{{ $years = $years | append .year }}{{ end }}
     {{- range $year := $years | uniq }}
     <section class="year-group">
       <h2 class="year-heading">{{ $year }}</h2>
       <div class="pub-list">
-        {{- range where $pubs "year" $year }}{{ partial "publication.html" . }}{{ end }}
+        {{- range where $others "year" $year }}{{ partial "publication.html" . }}{{ end }}
       </div>
     </section>
     {{- end }}
