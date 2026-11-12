@@ -1,90 +1,89 @@
 {{ define "main" }}
 {{- $p := site.Params.profile }}
 <section class="hero">
-  <div class="container hero-inner">
-    <div class="hero-text">
-      <p class="eyebrow">{{ $p.role }} · <a href="{{ $p.affiliationUrl }}" rel="noopener">{{ $p.affiliationShort }}</a></p>
-      <h1 class="hero-title">{{ $p.name }}</h1>
-      <p class="hero-lead">{{ $p.tagline }}</p>
-      <div class="hero-actions">
-        {{- with $p.cv }}<a class="btn btn-primary" href="/cv/">{{ partial "icon.html" "file-text" }}View CV</a>{{ end }}
-        {{- with $p.email }}<a class="btn btn-secondary" href="mailto:{{ . }}">{{ partial "icon.html" "mail" }}Get in touch</a>{{ end }}
-      </div>
-      {{ partial "social-links.html" (dict "labels" false) }}
-    </div>
-    <div class="hero-portrait">
-      {{ partial "avatar.html" (dict "size" 220) }}
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container narrow">
-    <h2 class="section-title">About</h2>
-    <div class="prose">
-      {{ .Content }}
-    </div>
-    {{- with $p.interests }}
-    <h3 class="subhead">Research interests</h3>
-    <ul class="interests">
-      {{- range . }}<li>{{ . }}</li>{{ end }}
-    </ul>
-    {{- end }}
-    <p><a class="link-arrow" href="/about/">More about me{{ partial "icon.html" "arrow-right" }}</a></p>
-  </div>
-</section>
-
-{{- $featured := where hugo.Data.projects "featured" true }}
-{{- with $featured }}
-<section class="section section-alt">
   <div class="container">
-    <div class="section-head">
-      <h2 class="section-title">Selected projects</h2>
-      <a class="link-arrow" href="/projects/">All projects{{ partial "icon.html" "arrow-right" }}</a>
+    <h1 class="hero-name">{{ $p.name }}</h1>
+    <p class="hero-role">{{ $p.role }} at <a href="{{ $p.affiliationUrl }}" rel="noopener">{{ $p.affiliationShort }}</a></p>
+    <p class="hero-lead">{{ $p.tagline }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/cv/">View CV</a>
+      {{- with $p.email }}<a class="btn btn-secondary" href="mailto:{{ . }}">Email me</a>{{ end }}
+      <ul class="text-links" aria-label="Profiles">
+        {{- with $p.github }}<li><a href="{{ . }}" rel="noopener me">GitHub</a></li>{{ end }}
+        {{- with $p.scholar }}<li><a href="{{ . }}" rel="noopener me">Google Scholar</a></li>{{ end }}
+        {{- with $p.linkedin }}<li><a href="{{ . }}" rel="noopener me">LinkedIn</a></li>{{ end }}
+      </ul>
     </div>
-    <div class="grid grid-3">
-      {{- range first 3 . }}{{ partial "project-card.html" . }}{{ end }}
+    {{ partial "timeline.html" . }}
+  </div>
+</section>
+
+<section class="band">
+  <div class="container band-grid">
+    <h2 class="band-title">About</h2>
+    <div class="band-body">
+      <div class="prose">{{ .Content }}</div>
+      {{- with $p.interests }}
+      <h3 class="band-subtitle">Research interests</h3>
+      <ul class="plain-list interests">
+        {{- range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      {{- end }}
+      <p><a href="/about/">More about me</a></p>
+    </div>
+  </div>
+</section>
+
+{{- with where hugo.Data.projects "featured" true }}
+<section class="band">
+  <div class="container band-grid">
+    <h2 class="band-title">Selected projects</h2>
+    <div class="band-body">
+      <div class="row-list">
+        {{- range first 3 . }}{{ partial "project-row.html" (dict "p" . "compact" true) }}{{ end }}
+      </div>
+      <p><a href="/projects/">All projects</a></p>
     </div>
   </div>
 </section>
 {{- end }}
 
 {{- $pubs := partial "publications-list.html" . }}
-{{- $selected := where $pubs "selected" true }}
-{{- with $selected | default $pubs }}
-<section class="section">
-  <div class="container narrow">
-    <div class="section-head">
-      <h2 class="section-title">Selected publications</h2>
-      <a class="link-arrow" href="/publications/">All publications{{ partial "icon.html" "arrow-right" }}</a>
-    </div>
-    <div class="pub-list">
-      {{- range first 4 . }}{{ partial "publication.html" . }}{{ end }}
-    </div>
-  </div>
-</section>
-{{- end }}
-
-{{- $posts := where site.RegularPages "Section" "blog" }}
-{{- with $posts }}
-<section class="section{{ if not $pubs }} section-alt{{ end }}">
-  <div class="container narrow">
-    <div class="section-head">
-      <h2 class="section-title">Latest writing</h2>
-      <a class="link-arrow" href="/blog/">All posts{{ partial "icon.html" "arrow-right" }}</a>
-    </div>
-    <div class="post-list">
-      {{- range first 3 .ByDate.Reverse }}{{ partial "post-item.html" . }}{{ end }}
+{{- with where $pubs "selected" true | default $pubs }}
+<section class="band">
+  <div class="container band-grid">
+    <h2 class="band-title">Selected publications</h2>
+    <div class="band-body">
+      <div class="pub-list">
+        {{- range first 4 . }}{{ partial "publication.html" . }}{{ end }}
+      </div>
+      <p><a href="/publications/">All publications</a></p>
     </div>
   </div>
 </section>
 {{- end }}
 
-<section class="section contact-cta">
-  <div class="container narrow center">
-    <h2 class="section-title">Let’s talk</h2>
-    <p class="lead">I’m happy to talk about multimodal data collection, research infrastructure, or working together.</p>
-    {{- with $p.email }}<a class="btn btn-primary" href="mailto:{{ . }}">{{ partial "icon.html" "mail" }}{{ . }}</a>{{ end }}
+{{- with where site.RegularPages "Section" "blog" }}
+<section class="band">
+  <div class="container band-grid">
+    <h2 class="band-title">Writing</h2>
+    <div class="band-body">
+      <div class="post-list">
+        {{- range first 3 .ByDate.Reverse }}{{ partial "post-item.html" . }}{{ end }}
+      </div>
+      <p><a href="/blog/">All posts</a></p>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<section class="band band-contact">
+  <div class="container band-grid">
+    <h2 class="band-title">Contact</h2>
+    <div class="band-body">
+      <p class="contact-line">I’m glad to hear about research collaborations, classroom data infrastructure, and roles where I can build learning technology at scale.</p>
+      {{- with $p.email }}<p><a class="contact-email" href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+    </div>
   </div>
 </section>
 {{ end }}

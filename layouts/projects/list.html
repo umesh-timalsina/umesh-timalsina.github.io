@@ -1,9 +1,8 @@
 {{ define "main" }}
 {{ partial "page-header.html" . }}
 <div class="container section-tight">
-  {{- with .Content }}<div class="prose narrow-block">{{ . }}</div>{{ end }}
-  <div class="grid grid-2">
-    {{- range hugo.Data.projects }}{{ partial "project-card.html" . }}{{ end }}
+  <div class="row-list row-list-full">
+    {{- range hugo.Data.projects }}{{ partial "project-row.html" (dict "p" . "compact" false) }}{{ end }}
   </div>
 </div>
 {{ end }}

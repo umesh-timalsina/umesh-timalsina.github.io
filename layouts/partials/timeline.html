@@ -1,0 +1,55 @@
+{{- /*
+  Multitrack timeline of projects, drawn like a synchronized recording session:
+  one lane per project on a shared time axis, with a playhead at "now".
+  Bars come from data/projects.yaml (start, end, track). Positions are percentages
+  of the axis, computed at build time.
+*/ -}}
+{{- $now := add (float now.Year) (div (float now.YearDay) 366.0) }}
+{{- $projects := where hugo.Data.projects "start" "!=" nil }}
+{{- $min := 9999.0 }}
+{{- range $projects }}{{ $min = math.Min $min (float .start) }}{{ end }}
+{{- $from := math.Floor $min }}
+{{- $to := add $now 0.25 }}
+{{- $span := sub $to $from }}
+{{- $pct := 100.0 }}
+{{- $nowPos := mul (div (sub $now $from) $span) $pct }}
+{{- $years := seq (int $from) (int (math.Floor $now)) }}
+{{- $sorted := sort $projects "start" }}
+<figure class="tracks" style="--now: {{ printf "%.3f" $nowPos }}%; --span: {{ printf "%.4f" $span }}">
+  <figcaption class="visually-hidden">Timeline of projects from {{ int $from }} to the present. Select a project to read more.</figcaption>
+  <div class="tracks-axis" aria-hidden="true">
+    {{- range $years }}
+      {{- $x := mul (div (sub (float .) $from) $span) $pct }}
+      <span class="tick" style="--x: {{ printf "%.3f" $x }}%"><span class="tick-full">{{ . }}</span><span class="tick-short">’{{ substr (string .) 2 2 }}</span></span>
+    {{- end }}
+  </div>
+  <ol class="tracks-list">
+    {{- range $sorted }}
+      {{- $start := float .start }}
+      {{- $end := $now }}
+      {{- with .end }}{{ $end = float . }}{{ end }}
+      {{- $l := mul (div (sub $start $from) $span) $pct }}
+      {{- $w := mul (div (sub $end $start) $span) $pct }}
+      {{- $label := .short | default .title }}
+      <li>
+        <a class="track track-{{ .track | default "infra" }}" href="/projects/#{{ anchorize .title }}">
+          <span class="track-name">{{ $label }}</span>
+          <span class="track-lane">
+            <span class="track-bar{{ if not .end }} is-ongoing{{ end }}" style="--l: {{ printf "%.3f" $l }}%; --w: {{ printf "%.3f" $w }}%">
+              <span class="visually-hidden">{{ .title }}, {{ .years }}</span>
+            </span>
+          </span>
+        </a>
+      </li>
+    {{- end }}
+  </ol>
+  <div class="tracks-overlay" aria-hidden="true">
+    <div class="tracks-cover"></div>
+    <div class="playhead"><span class="playhead-label">Now</span></div>
+  </div>
+</figure>
+<ul class="tracks-key">
+  <li class="key-edtech">Learning technology</li>
+  <li class="key-infra">Research software</li>
+  <li class="key-engineering">Engineering design and ML</li>
+</ul>

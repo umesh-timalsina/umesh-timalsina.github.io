@@ -2,91 +2,66 @@
 {{- $p := site.Params.profile }}
 {{- $cv := hugo.Data.experience }}
 <header class="page-header">
-  <div class="container narrow page-header-row">
-    <div>
+  <div class="container band-grid">
+    <div class="band-body">
       <h1 class="page-title">{{ .Title }}</h1>
       <p class="lead">{{ $p.role }}, {{ $p.affiliation }}</p>
+      {{- with $p.cv }}{{ if fileExists (printf "static%s" .) }}
+      <p><a class="btn btn-primary" href="{{ . }}" download>Download PDF</a></p>
+      {{- end }}{{ end }}
     </div>
-    {{- with $p.cv }}
-      {{- if fileExists (printf "static%s" .) }}
-      <a class="btn btn-primary" href="{{ . }}" download>{{ partial "icon.html" "download" }}Download PDF</a>
-      {{- end }}
-    {{- end }}
   </div>
 </header>
 
-<div class="container narrow section-tight">
-  {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
-
+<div class="container section-tight">
   {{- with $cv.experience }}
   <section class="cv-section">
-    <h2 class="cv-heading">Experience</h2>
-    <ol class="timeline">
-      {{- range . }}
-      <li class="timeline-item">
-        <div class="timeline-head">
-          <h3 class="timeline-title">{{ .title }}</h3>
-          {{- with .period }}<span class="timeline-period">{{ . }}</span>{{ end }}
-        </div>
-        <p class="timeline-org">{{ with .url }}<a href="{{ . }}" rel="noopener">{{ end }}{{ .org }}{{ with .url }}</a>{{ end }}{{ with .location }} · {{ . }}{{ end }}</p>
-        {{- with .points }}
-        <ul class="timeline-points">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
-        {{- end }}
-      </li>
-      {{- end }}
-    </ol>
+    <div class="band-grid"><h2 class="cv-heading band-body">Experience</h2></div>
+    {{- range . }}
+    <article class="band-grid cv-entry">
+      <p class="cv-when">{{ .period }}</p>
+      <div class="band-body">
+        <h3 class="cv-title">{{ .title }}</h3>
+        <p class="cv-org">{{ with .url }}<a href="{{ . }}" rel="noopener">{{ end }}{{ .org }}{{ with .url }}</a>{{ end }}{{ with .location }}, {{ . }}{{ end }}</p>
+        {{- with .points }}<ul class="cv-points">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      </div>
+    </article>
+    {{- end }}
   </section>
   {{- end }}
 
   {{- with $cv.education }}
   <section class="cv-section">
-    <h2 class="cv-heading">Education</h2>
-    <ol class="timeline">
-      {{- range . }}
-      <li class="timeline-item">
-        <div class="timeline-head">
-          <h3 class="timeline-title">{{ .degree }}</h3>
-          {{- with .period }}<span class="timeline-period">{{ . }}</span>{{ end }}
-        </div>
-        <p class="timeline-org">{{ with .url }}<a href="{{ . }}" rel="noopener">{{ end }}{{ .org }}{{ with .url }}</a>{{ end }}</p>
-      </li>
-      {{- end }}
-    </ol>
+    <div class="band-grid"><h2 class="cv-heading band-body">Education</h2></div>
+    {{- range . }}
+    <article class="band-grid cv-entry">
+      <p class="cv-when">{{ .period }}</p>
+      <div class="band-body">
+        <h3 class="cv-title">{{ .degree }}</h3>
+        <p class="cv-org">{{ with .url }}<a href="{{ . }}" rel="noopener">{{ end }}{{ .org }}{{ with .url }}</a>{{ end }}</p>
+      </div>
+    </article>
+    {{- end }}
   </section>
   {{- end }}
-
-  <section class="cv-section">
-    <h2 class="cv-heading">Selected projects</h2>
-    <ul class="cv-list">
-      {{- range hugo.Data.projects }}
-      <li><strong>{{ .title }}</strong>{{ with .years }} <span class="muted">({{ . }})</span>{{ end }}: {{ .role }}</li>
-      {{- end }}
-    </ul>
-    <p><a class="link-arrow" href="/projects/">Project details{{ partial "icon.html" "arrow-right" }}</a></p>
-  </section>
 
   {{- with $cv.skills }}
   <section class="cv-section">
-    <h2 class="cv-heading">Technical skills</h2>
-    <dl class="skills">
-      {{- range . }}
-      <dt>{{ .area }}</dt>
-      <dd>{{ .items }}</dd>
-      {{- end }}
-    </dl>
+    <div class="band-grid"><h2 class="cv-heading band-body">Technical skills</h2></div>
+    {{- range . }}
+    <div class="band-grid cv-entry">
+      <p class="cv-when">{{ .area }}</p>
+      <p class="band-body cv-skill">{{ .items }}</p>
+    </div>
+    {{- end }}
   </section>
   {{- end }}
 
   <section class="cv-section">
-    <h2 class="cv-heading">Publications</h2>
-    <p>{{ len (partial "publications-list.html" .) }} papers and preprints. <a class="link-arrow" href="/publications/">See the full list{{ partial "icon.html" "arrow-right" }}</a></p>
+    <div class="band-grid"><h2 class="cv-heading band-body">Projects and publications</h2></div>
+    <div class="band-grid">
+      <p class="band-body">{{ len hugo.Data.projects }} <a href="/projects/">projects</a> and {{ len (partial "publications-list.html" .) }} <a href="/publications/">papers and preprints</a>.</p>
+    </div>
   </section>
-
-  {{- with $p.interests }}
-  <section class="cv-section">
-    <h2 class="cv-heading">Interests</h2>
-    <ul class="tags">{{ range . }}<li class="tag">{{ . }}</li>{{ end }}</ul>
-  </section>
-  {{- end }}
 </div>
 {{ end }}

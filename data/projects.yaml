@@ -1,6 +1,10 @@
 # Projects shown on /projects/ (and the first three featured on the homepage).
-# Fields: title, summary, role, years, tags[], featured, links[{label, url}]
+# Fields: title, short (timeline label), start/end (decimal years; omit end if
+# ongoing), track (edtech | infra | engineering; sets the timeline color),
+# summary, role, years, tags[], featured, links[{label, url}]
 - title: Betty's Math
+  start: 2025.17
+  track: edtech
   summary: >-
     A math assessment and AI-tutoring platform embedded in the OECD's PILA
     and deployed in a randomized controlled trial across hundreds of schools
@@ -14,6 +18,8 @@
   links: [] # TODO: add a public link if one exists
 
 - title: SyncFlow
+  start: 2023.5
+  track: infra
   summary: >-
     An open-source WebRTC platform for real-time multimodal classroom data. It
     sustains 200 concurrent streams at about 200 ms latency and has archived
@@ -29,6 +35,9 @@
     - { label: Write-up, url: "/blog/days-of-collection-days-of-despair/" }
 
 - title: ChimeraPy
+  start: 2022.4
+  end: 2023.9
+  track: infra
   summary: >-
     A distributed streaming framework for real-time multimodal data retrieval
     and processing, used by 100+ people in Nashville-area classroom studies. I
@@ -44,6 +53,9 @@
     - { label: Paper, url: "/publications/" }
 
 - title: Real-time classroom AI feedback
+  short: Classroom AI
+  start: 2025.3
+  track: edtech
   summary: >-
     Ongoing work on live feedback for classrooms: speech recognition with
     NVIDIA Riva and AWS Transcribe, computer vision models on edge and cloud
@@ -56,6 +68,9 @@
   links: []
 
 - title: DeepForge
+  start: 2019.6
+  end: 2022.4
+  track: infra
   summary: >-
     An NSF-funded visual environment for building and running deep learning
     pipelines (700+ GitHub stars). I led its Keras parser modernization and
@@ -70,6 +85,10 @@
     - { label: Paper, url: "/publications/" }
 
 - title: GMSO & MoSDeF
+  short: GMSO
+  start: 2019.6
+  end: 2022.4
+  track: infra
   summary: >-
     GMSO is the core topology library of the NSF-funded Molecular Simulation
     Design Framework (MoSDeF). I led its development, created
@@ -83,6 +102,10 @@
     - { label: Code, url: "https://github.com/mosdef-hub/gmso" }
 
 - title: Symbench design tools
+  short: Symbench
+  start: 2019.6
+  end: 2022.4
+  track: engineering
   summary: >-
     Tools for DARPA's Symbiotic Design for CPS program: Circuit Maker, a
     web-based circuit design studio that uses deep learning to predict the
@@ -97,6 +120,10 @@
     - { label: Organization, url: "https://github.com/symbench" }
 
 - title: Surrogate-based hull design optimization
+  short: Hull design
+  start: 2022.4
+  end: 2024.6
+  track: engineering
   summary: >-
     Deep active learning and surrogate models for underwater vehicle hull
     design, driven by a combined CAD–CFD simulation pipeline.

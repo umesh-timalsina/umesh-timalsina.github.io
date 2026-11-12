@@ -1,10 +1,9 @@
 {{ define "main" }}
-<section class="section">
-  <div class="container narrow center">
-    <p class="eyebrow">404</p>
+<section class="container band-grid not-found">
+  <div class="band-body">
     <h1 class="page-title">Page not found</h1>
-    <p class="lead">The page you’re looking for doesn’t exist or has moved.</p>
-    <a class="btn btn-primary" href="{{ site.Home.RelPermalink }}">Back to home</a>
+    <p class="lead">This address doesn’t match any page. It may have moved when the site was reorganized.</p>
+    <p><a class="btn btn-primary" href="{{ site.Home.RelPermalink }}">Go to the homepage</a></p>
   </div>
 </section>
 {{ end }}

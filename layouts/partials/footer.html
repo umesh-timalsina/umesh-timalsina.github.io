@@ -1,30 +1,22 @@
 {{- $p := site.Params.profile }}
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-id">
-      <p class="footer-name">{{ $p.name }}</p>
-      <p class="muted">{{ $p.role }}, <a href="{{ $p.affiliationUrl }}" rel="noopener">{{ $p.affiliationShort }}</a></p>
-      {{ partial "social-links.html" (dict "labels" false) }}
+  <div class="container band-grid footer-inner">
+    <p class="footer-name">{{ $p.name }}</p>
+    <div class="band-body footer-cols">
+      <ul class="plain-list">
+        {{- range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+      </ul>
+      <ul class="plain-list">
+        {{- with $p.email }}<li><a href="mailto:{{ . }}">Email</a></li>{{ end }}
+        {{- with $p.github }}<li><a href="{{ . }}" rel="noopener me">GitHub</a></li>{{ end }}
+        {{- with $p.scholar }}<li><a href="{{ . }}" rel="noopener me">Google Scholar</a></li>{{ end }}
+        {{- with $p.linkedin }}<li><a href="{{ . }}" rel="noopener me">LinkedIn</a></li>{{ end }}
+      </ul>
+      <ul class="plain-list">
+        {{- range site.Menus.personal }}<li><a href="{{ .URL }}"{{ if hasPrefix .URL "http" }} rel="noopener"{{ end }}>{{ .Name }}</a></li>{{ end }}
+        {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .RelPermalink }}">RSS feed</a></li>{{ end }}
+      </ul>
     </div>
-    <nav class="footer-nav" aria-label="Footer">
-      <div>
-        <p class="footer-heading">Site</p>
-        <ul>
-          {{- range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
-        </ul>
-      </div>
-      <div>
-        <p class="footer-heading">Personal</p>
-        <ul>
-          {{- range site.Menus.personal }}
-          <li><a href="{{ .URL }}"{{ if hasPrefix .URL "http" }} rel="noopener"{{ end }}>{{ .Name }}</a></li>
-          {{- end }}
-          {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .RelPermalink }}">RSS feed</a></li>{{ end }}
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div class="container footer-legal">
-    <p class="muted">© {{ now.Year }} {{ site.Copyright | default $p.name }}</p>
+    <p class="footer-legal band-body muted">© {{ now.Year }} {{ $p.name }}</p>
   </div>
 </footer>

@@ -5,10 +5,10 @@
   <p class="pub-authors">
     {{- range $i, $a := .authors }}{{ if $i }}, {{ end }}{{ if in $me $a }}<strong>{{ $a }}</strong>{{ else }}{{ $a }}{{ end }}{{ end -}}
   </p>
-  <p class="pub-venue"><em>{{ .venue }}</em>{{ with .year }}, {{ . }}{{ end }}{{ with .note }} · <span class="pub-note">{{ . }}</span>{{ end }}</p>
+  <p class="pub-venue"><cite>{{ .venue }}</cite>, {{ .year }}{{ with .note }}. <span class="pub-note">{{ . }}</span>{{ end }}</p>
   {{- with .links }}
   <p class="pub-links">
-    {{- range . }}<a class="badge" href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>{{ .label }}</a>{{ end -}}
+    {{- range . }}<a href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>{{ .label }}</a>{{ end -}}
   </p>
   {{- end }}
 </article>
