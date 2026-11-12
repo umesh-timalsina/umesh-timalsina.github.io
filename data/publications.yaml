@@ -9,6 +9,7 @@
 #   year:     2024
 #   type:     journal | conference | workshop | preprint | abstract
 #   selected: true. Shown under "Selected publications" on the homepage.
+#   featured: true. Listed under "Featured publications" at the top of /publications/.
 #   links:    [{label: PDF|arXiv|DOI|Code, url: ...}]
 #   note:     optional, e.g. "Best Paper Award"
 #
@@ -62,6 +63,7 @@
   venue: "US Research Software Engineer Conference (US-RSE)"
   year: 2025
   type: conference
+  featured: true
   selected: true
   links:
     - { label: Code, url: "https://github.com/oele-isis-vanderbilt/SyncFlow" }
@@ -113,6 +115,7 @@
   venue: "IEEE Workshop on Design Automation for CPS and IoT (DESTION), pp. 16–21"
   year: 2024
   type: workshop
+  featured: true
 
 - title: "3D Gaze Tracking for Studying Collaborative Interactions in Mixed-Reality Environments"
   authors: ["E. Davalos", "Y. Zhang", "T. S. Ashwin", "J. H. Fonteles", "U. Timalsina", "G. Biswas"]
@@ -126,6 +129,7 @@
   venue: "IEEE International Conference on Big Data (BigData), pp. 201–206"
   year: 2023
   type: conference
+  featured: true
   selected: true
   links:
     - { label: Code, url: "https://github.com/ChimeraPy" }
@@ -142,6 +146,7 @@
   venue: "Astronomy and Computing 40, 100601"
   year: 2022
   type: journal
+  featured: true
   selected: true
 
 # ---------------------------------------------------------------- 2020
@@ -157,3 +162,4 @@
   venue: "2nd International Conference on Data Intelligence and Security (ICDIS)"
   year: 2019
   type: conference
+  featured: true
