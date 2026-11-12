@@ -1,5 +1,6 @@
 /* Long-form text: About, blog posts, homepage intro. Literata, set a little looser. */
 .prose {
+  max-width: var(--measure);
   font-family: var(--font-text);
   font-size: 1.0625rem;
   line-height: 1.72;

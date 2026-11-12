@@ -1,22 +1,24 @@
 {{- $p := site.Params.profile }}
 <footer class="site-footer">
   <div class="container band-grid footer-inner">
-    <p class="footer-name">{{ $p.name }}</p>
-    <div class="band-body footer-cols">
-      <ul class="plain-list">
+    <div class="footer-id">
+      <p class="footer-name">{{ $p.name }}</p>
+      <p class="muted">© {{ now.Year }}</p>
+    </div>
+    <nav class="band-body footer-links" aria-label="Footer">
+      <ul class="plain-list" aria-label="Pages">
         {{- range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
       </ul>
-      <ul class="plain-list">
+      <ul class="plain-list" aria-label="Profiles">
         {{- with $p.email }}<li><a href="mailto:{{ . }}">Email</a></li>{{ end }}
         {{- with $p.github }}<li><a href="{{ . }}" rel="noopener me">GitHub</a></li>{{ end }}
         {{- with $p.scholar }}<li><a href="{{ . }}" rel="noopener me">Google Scholar</a></li>{{ end }}
         {{- with $p.linkedin }}<li><a href="{{ . }}" rel="noopener me">LinkedIn</a></li>{{ end }}
       </ul>
-      <ul class="plain-list">
+      <ul class="plain-list" aria-label="Personal">
         {{- range site.Menus.personal }}<li><a href="{{ .URL }}"{{ if hasPrefix .URL "http" }} rel="noopener"{{ end }}>{{ .Name }}</a></li>{{ end }}
-        {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .RelPermalink }}">RSS feed</a></li>{{ end }}
+        {{- with site.Home.OutputFormats.Get "rss" }}<li><a href="{{ .RelPermalink }}">RSS</a></li>{{ end }}
       </ul>
-    </div>
-    <p class="footer-legal band-body muted">© {{ now.Year }} {{ $p.name }}</p>
+    </nav>
   </div>
 </footer>

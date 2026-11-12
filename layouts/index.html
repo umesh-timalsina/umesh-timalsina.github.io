@@ -3,16 +3,20 @@
 <section class="hero">
   <div class="container">
     <h1 class="hero-name">{{ $p.name }}</h1>
-    <p class="hero-role">{{ $p.role }} at <a href="{{ $p.affiliationUrl }}" rel="noopener">{{ $p.affiliationShort }}</a></p>
-    <p class="hero-lead">{{ $p.tagline }}</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="/cv/">View CV</a>
-      {{- with $p.email }}<a class="btn btn-secondary" href="mailto:{{ . }}">Email me</a>{{ end }}
-      <ul class="text-links" aria-label="Profiles">
-        {{- with $p.github }}<li><a href="{{ . }}" rel="noopener me">GitHub</a></li>{{ end }}
-        {{- with $p.scholar }}<li><a href="{{ . }}" rel="noopener me">Google Scholar</a></li>{{ end }}
-        {{- with $p.linkedin }}<li><a href="{{ . }}" rel="noopener me">LinkedIn</a></li>{{ end }}
-      </ul>
+    <div class="band-grid hero-intro">
+      <p class="hero-role">{{ $p.role }},<br><a href="{{ $p.affiliationUrl }}" rel="noopener">{{ $p.affiliationShort }}</a></p>
+      <div class="band-body">
+        <p class="hero-lead">{{ $p.tagline }}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/cv/">View CV</a>
+          {{- with $p.email }}<a class="btn btn-secondary" href="mailto:{{ . }}">Email me</a>{{ end }}
+          <ul class="text-links" aria-label="Profiles">
+            {{- with $p.github }}<li><a href="{{ . }}" rel="noopener me">GitHub</a></li>{{ end }}
+            {{- with $p.scholar }}<li><a href="{{ . }}" rel="noopener me">Google Scholar</a></li>{{ end }}
+            {{- with $p.linkedin }}<li><a href="{{ . }}" rel="noopener me">LinkedIn</a></li>{{ end }}
+          </ul>
+        </div>
+      </div>
     </div>
     {{ partial "timeline.html" . }}
   </div>
@@ -21,15 +25,19 @@
 <section class="band">
   <div class="container band-grid">
     <h2 class="band-title">About</h2>
-    <div class="band-body">
-      <div class="prose">{{ .Content }}</div>
+    <div class="band-body about-split">
+      <div class="prose">
+        {{ .Content }}
+        <p><a href="/about/">More about me</a></p>
+      </div>
       {{- with $p.interests }}
-      <h3 class="band-subtitle">Research interests</h3>
-      <ul class="plain-list interests">
-        {{- range . }}<li>{{ . }}</li>{{ end }}
-      </ul>
+      <aside class="interests-aside">
+        <h3 class="band-subtitle">Research interests</h3>
+        <ul class="plain-list interests">
+          {{- range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      </aside>
       {{- end }}
-      <p><a href="/about/">More about me</a></p>
     </div>
   </div>
 </section>
@@ -39,7 +47,7 @@
   <div class="container band-grid">
     <h2 class="band-title">Selected projects</h2>
     <div class="band-body">
-      <div class="row-list">
+      <div class="row-list spread-3">
         {{- range first 3 . }}{{ partial "project-row.html" (dict "p" . "compact" true) }}{{ end }}
       </div>
       <p><a href="/projects/">All projects</a></p>
@@ -54,7 +62,7 @@
   <div class="container band-grid">
     <h2 class="band-title">Selected publications</h2>
     <div class="band-body">
-      <div class="pub-list">
+      <div class="pub-list spread-2">
         {{- range first 4 . }}{{ partial "publication.html" . }}{{ end }}
       </div>
       <p><a href="/publications/">All publications</a></p>
@@ -68,7 +76,7 @@
   <div class="container band-grid">
     <h2 class="band-title">Writing</h2>
     <div class="band-body">
-      <div class="post-list">
+      <div class="post-list spread-3">
         {{- range first 3 .ByDate.Reverse }}{{ partial "post-item.html" . }}{{ end }}
       </div>
       <p><a href="/blog/">All posts</a></p>

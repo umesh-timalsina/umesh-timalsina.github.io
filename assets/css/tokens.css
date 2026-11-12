@@ -14,10 +14,10 @@
   --fs-hero: clamp(3.25rem, 1.5rem + 7.5vw, 7.25rem);
 
   /* Layout: one label column shared by the timeline, section headings and dates */
-  --container: 76rem;
+  --container: 90rem;
   --gutter: clamp(1rem, 4vw, 2.5rem);
-  --label: 12.5rem;
-  --gap: 2.5rem;
+  --label: 13rem;
+  --gap: 3rem;
   --measure: 42rem;
   --header-h: 3.75rem;
 
