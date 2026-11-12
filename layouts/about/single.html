@@ -1,24 +1,6 @@
 {{ define "main" }}
-{{- $p := site.Params.profile }}
 {{ partial "page-header.html" . }}
-<div class="container section-tight band-grid">
-  <aside class="about-aside">
-    {{ partial "avatar.html" (dict "size" 112) }}
-    <ul class="plain-list about-facts">
-      <li>{{ $p.role }}</li>
-      <li>{{ $p.affiliationShort }}</li>
-      {{- with $p.location }}<li>{{ . }}</li>{{ end }}
-    </ul>
-    <ul class="plain-list about-links">
-      {{- with $p.email }}<li><a href="mailto:{{ . }}">Email</a></li>{{ end }}
-      {{- with $p.github }}<li><a href="{{ . }}" rel="noopener me">GitHub</a></li>{{ end }}
-      {{- with $p.scholar }}<li><a href="{{ . }}" rel="noopener me">Google Scholar</a></li>{{ end }}
-      {{- with $p.linkedin }}<li><a href="{{ . }}" rel="noopener me">LinkedIn</a></li>{{ end }}
-      <li><a href="/cv/">CV</a></li>
-    </ul>
-  </aside>
-  <div class="band-body prose">
-    {{ .Content }}
-  </div>
+<div class="container about-page">
+  {{ .Content }}
 </div>
 {{ end }}

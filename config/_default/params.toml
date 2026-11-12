@@ -14,7 +14,6 @@ mainSections = ["blog"]
   affiliationUrl = "https://www.isis.vanderbilt.edu"
   location = "Nashville, TN"
   tagline = "I build research software for learning: an LLM-powered tutoring platform in an OECD randomized controlled trial across European schools, and real-time multimodal analytics systems used in U.S. classroom studies."
-  headshot = "" # e.g. "images/headshot.jpg" (in assets/); a monogram is shown when empty
   email = "umesh.timalsina26@gmail.com"
   github = "https://github.com/umesh-timalsina"
   linkedin = "https://www.linkedin.com/in/umesh-timalsina-812a4a103/"
