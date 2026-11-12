@@ -23,7 +23,6 @@
   venue: "International Conference on Artificial Intelligence in Education (AIED)"
   year: 2026
   type: conference
-  selected: true
 
 - title: "A Theory-Guided LLM Pedagogical Agent for STEM+C Scaffolding Without Over-Reliance"
   authors: ["C. Cohn", "S. Rayala", "S. Guo", "H. D. Wang", "N. Mohammed", "U. Timalsina", "S. Jain", "et al."]
@@ -108,7 +107,6 @@
   venue: "Ocean Engineering 311, 118777"
   year: 2024
   type: journal
-  selected: true
 
 - title: "Anvil: An Integration of Artificial Intelligence, Sampling Techniques, and a Combined CAD-CFD Tool"
   authors: ["H. Vardhan", "U. Timalsina", "M. Sandborn", "D. Hyde", "P. Volgyesi", "J. Sztipanovits"]
@@ -156,6 +154,7 @@
   year: 2020
   type: journal
   featured: true
+  selected: true
 
 # ---------------------------------------------------------------- 2019
 - title: "Incentivizing Services Sharing in IoT with OSGi and HashGraph"
